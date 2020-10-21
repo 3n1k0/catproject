@@ -1,13 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <top-header>
-
-      </top-header>
+      <top-header> </top-header>
     </div>
     <router-view />
-    <footer-component/>
-
+    <footer-component />
   </div>
 </template>
 
@@ -18,9 +15,8 @@ import FooterComponent from "@/components/FooterComponent.vue";
 
 @Component({
   components: {
-   "top-header": TopHeader,
-   "footer-component": FooterComponent
-
+    "top-header": TopHeader,
+    "footer-component": FooterComponent
   }
 })
 export default class Home extends Vue {}

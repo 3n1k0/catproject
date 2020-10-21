@@ -10,21 +10,20 @@ const routes: Array<RouteConfig> = [
     name: "Home",
     component: Home
   },
-    {
+  {
     path: "/random",
-    name: "Random",
+    name: "Random"
     // component: Random
   },
-      {
+  {
     path: "/detail",
-    name: "Detail",
+    name: "Detail"
     // component: Random
-  },
-
+  }
 ];
 
 const router = new VueRouter({
-   mode: "history",
+  mode: "history",
   routes
 });
 
