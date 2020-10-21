@@ -6,7 +6,7 @@
             <b-card-text>
                 <h2>{{ title }}</h2>
             </b-card-text>
-            <router-link to="/details">Learn more about this cat</router-link>
+            <router-link :to="`detailpage/${breedId}`">Learn more about this cat</router-link>
             <b-card-footer>
                 <p>{{ temperament }}</p>
             </b-card-footer>
@@ -46,8 +46,10 @@ export default {
 
             })
             .then(response => {
-                this.image = response.data[0].url;
-                this.temperament = response.data[0].breeds[0].temperament;
+                this.image = response.data[0].url; 
+                this.temperament = response.data[0].breeds[0].temperament.split(',', 3).join("  ")
+           
+            
 
             })
             .catch(error => console.log(error));
