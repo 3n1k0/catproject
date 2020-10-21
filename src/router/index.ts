@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import DetailPage from "../views/DetailPage.vue";
+import Random from "../views/Random.vue";
 // import store from './store'
 
 Vue.use(VueRouter);
@@ -14,8 +15,10 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/random",
-    name: "Random"
-    // component: Random
+    name: "Random",
+    component: Random,
+    props: true
+  
   },
   {
    path: "/detailpage/:breedId",

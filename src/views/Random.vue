@@ -1,9 +1,10 @@
 <template>
 <div>
-    <h1>{{ cats }}</h1>
+    <b-container>
+        <h1> {{ randomName }} </h1>
 
-console.log($store.state.cats)
-    <b-button>Randomize</b-button>
+        <b-button>Randomize</b-button>
+    </b-container>
 </div>
 </template>
 
@@ -17,13 +18,28 @@ export default {
 
     data() {
         return {
-            name: "",
-            description: "",
-            url: ""
+            randomName: "",
+            
         };
     },
 
-    props: ["breedId"]
+    beforeMount() {
+        const headers = {
+            "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
+        };
+        axios
+            .get("https://api.thecatapi.com/v1/breeds", {
+                headers,
+
+            })
+            .then(response => {
+
+                 this.randomName = response.data[Math.floor(Math.random() * 67)].name;
+             
+            })
+            .catch(error => console.log(error));
+    }
+
 }
 </script>
 
