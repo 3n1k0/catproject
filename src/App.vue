@@ -18,6 +18,9 @@ import FooterComponent from "@/components/FooterComponent.vue";
   components: {
     "top-header": TopHeader,
     "footer-component": FooterComponent
+  },
+  async mounted() {
+    this.$store.dispatch('loadCats');
   }
 })
 export default class Home extends Vue {}

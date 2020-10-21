@@ -1,13 +1,13 @@
 <template>
 <div>
-    <h1>{{ name }}</h1>
-    <p>{{ description }}</p>
+    <h1>{{ cat.name }}</h1>
+    <p>{{ cat.description }}</p>
     <img :src="url" style="max-width:20rem" img-alt="cat" img-top tag="article" />
-    <p><i class="fas fa-plug"></i>Energy level: {{ energy }}/5</p>
-    <p><i class="fas fa-glasses"></i>Intelligence: {{ intelligence }}/5</p>
-    <p><i class="fas fa-heart"></i>Affection level: {{ affection }}/5</p>
-    <p><i class="fas fa-dog"></i>Dog friendly: {{ affection }}/5</p>
-    <p><i class="fas fa-vial"></i>Experimental: {{ affection }}/5</p>
+    <p><i class="fas fa-plug"></i>Energy level: {{ cat.energy_level }}/5</p>
+    <p><i class="fas fa-glasses"></i>Intelligence: {{ cat.intelligence }}/5</p>
+    <p><i class="fas fa-heart"></i>Affection level: {{ cat.affection }}/5</p>
+    <p><i class="fas fa-dog"></i>Dog friendly: {{ cat.dog_friendly }}/5</p>
+    <p><i class="fas fa-vial"></i>Experimental: {{ cat.experimental }}/5</p>
 </div>
 </template>
 
@@ -27,6 +27,14 @@ export default {
         };
     },
 
+    computed: {
+        cat() {
+            return this.$store.state.cats.find((cat) => {
+                return cat['breed_id'] === this.breedId
+            })   
+        }
+    },
+
     props: ["breedId"],
 
     mounted() {
@@ -42,13 +50,6 @@ export default {
             })
             .then(response => {
                 const breed = response.data[0].breeds[0];
-                this.name = breed.name;
-                this.description = breed.description;
-                this.energy = breed.energy_level;
-                this.affection = breed.affection_level;
-                this.intelligence = breed.intelligence;
-                this.dogfriendly = breed.dog_friendly;
-                this.experimental = breed.experimental;
                 this.url = response.data[0].url;
             })
             .catch(error => console.log(error));

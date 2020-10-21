@@ -56,9 +56,6 @@ export default {
             ],
             selectedSortingMethod: "A-Z"
         }
-    },
-    async mounted() {
-        this.$store.dispatch('loadCats');
     }
 };
 </script>
