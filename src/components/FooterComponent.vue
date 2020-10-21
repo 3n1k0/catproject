@@ -2,14 +2,20 @@
 <footer>
     <ul>
         <li v-for="cat in cats" :key="cat.name">
-            <router-link :to="`detailpage/${cat.breedId}`">{{cat.name}}</router-link>
+            <router-link :to="`/detailpage/${cat.id}`">{{cat.name}}</router-link>
         </li>
     </ul>
 </footer>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+    props: {
+        breedId: String
+
+    },
 
     computed: {
         cats() {

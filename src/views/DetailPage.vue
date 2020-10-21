@@ -1,6 +1,7 @@
 <template>
 <div>
     <h1>{{ cat.name }}</h1>
+
     <p>{{ cat.description }}</p>
     <img :src="url" style="max-width:20rem" img-alt="cat" img-top tag="article" />
     <p><i class="fas fa-plug"></i>Energy level: {{ cat.energy_level }}/5</p>
@@ -15,10 +16,10 @@
 import {
     useRoute
 } from "vue-router";
-
 import axios from "axios";
 
 export default {
+
     data() {
         return {
             name: "",
@@ -31,11 +32,31 @@ export default {
         cat() {
             return this.$store.state.cats.find((cat) => {
                 return cat.id === this.breedId
-            })   
+            })
         }
     },
 
     props: ["breedId"],
+
+    watch: {
+        breedId() {
+            const headers = {
+                "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
+            };
+            axios
+                .get("https://api.thecatapi.com/v1/images/search", {
+                    headers,
+                    params: {
+                        "id": this.breedId
+                    }
+                })
+                .then(response => {
+                    const breed = response.data[0].breeds[0];
+                    this.url = response.data[0].url;
+                })
+                .catch(error => console.log(error));
+        }
+    },
 
     mounted() {
         const headers = {
@@ -45,7 +66,7 @@ export default {
             .get("https://api.thecatapi.com/v1/images/search", {
                 headers,
                 params: {
-                    "breed_id": this.breedId
+                    "id": this.breedId
                 }
             })
             .then(response => {
@@ -54,6 +75,7 @@ export default {
             })
             .catch(error => console.log(error));
     }
+
 };
 </script>
 
