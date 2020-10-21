@@ -43,18 +43,13 @@ export default {
                 params: {
                     "breed_id": this.breedId
                 }
-
             })
             .then(response => {
                 this.image = response.data[0].url; 
                 this.temperament = response.data[0].breeds[0].temperament.split(',', 3).join("  ")
-           
-            
-
             })
             .catch(error => console.log(error));
     }
-
 }
 </script>
 
