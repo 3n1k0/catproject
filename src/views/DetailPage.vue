@@ -30,7 +30,7 @@ export default {
     computed: {
         cat() {
             return this.$store.state.cats.find((cat) => {
-                return cat['breed_id'] === this.breedId
+                return cat.id === this.breedId
             })   
         }
     },
