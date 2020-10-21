@@ -6,7 +6,7 @@
             <b-card-text>
                 <h2>{{ title }}</h2>
             </b-card-text>
-            <router-link :to="`detailpage/${breedId}`">Learn more about this cat</router-link>
+            <b-button variant="info"><router-link :to="`detailpage/${breedId}`">Learn more about this cat</router-link></b-button>
             <b-card-footer>
                 <p>{{ temperament }}</p>
             </b-card-footer>

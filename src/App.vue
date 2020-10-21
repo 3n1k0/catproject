@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import store from './store'
 import TopHeader from "@/components/TopHeader.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 
