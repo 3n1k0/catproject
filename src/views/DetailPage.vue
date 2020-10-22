@@ -3,7 +3,7 @@
     <h1>{{ cat.name }}</h1>
 
     <p>{{ cat.description }}</p>
-    <img :src="url" style="max-width:20rem" img-alt="cat" img-top tag="article" />
+    <get-cat-image :breedId="cat.id"></get-cat-image>
     <p><i class="fas fa-plug"></i>Energy level: {{ cat.energy_level }}/5</p>
     <p><i class="fas fa-glasses"></i>Intelligence: {{ cat.intelligence }}/5</p>
     <p><i class="fas fa-heart"></i>Affection level: {{ cat.affection }}/5</p>
@@ -17,14 +17,17 @@ import {
     useRoute
 } from "vue-router";
 import axios from "axios";
+import GetCatImage from '@/components/GetCatImage'
 
 export default {
+    components: {
+        "get-cat-image": GetCatImage
+    },
 
     data() {
         return {
             name: "",
-            description: "",
-            url: ""
+            description: ""
         };
     },
 
@@ -37,44 +40,6 @@ export default {
     },
 
     props: ["breedId"],
-
-    watch: {
-        breedId() {
-            const headers = {
-                "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
-            };
-            axios
-                .get("https://api.thecatapi.com/v1/images/search", {
-                    headers,
-                    params: {
-                        "id": this.breedId
-                    }
-                })
-                .then(response => {
-                    const breed = response.data[0].breeds[0];
-                    this.url = response.data[0].url;
-                })
-                .catch(error => console.log(error));
-        }
-    },
-
-    mounted() {
-        const headers = {
-            "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
-        };
-        axios
-            .get("https://api.thecatapi.com/v1/images/search", {
-                headers,
-                params: {
-                    "id": this.breedId
-                }
-            })
-            .then(response => {
-                const breed = response.data[0].breeds[0];
-                this.url = response.data[0].url;
-            })
-            .catch(error => console.log(error));
-    }
 
 };
 </script>

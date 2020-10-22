@@ -1,9 +1,12 @@
 <template>
 <div>
     <b-container>
-        <h1> {{ randomName }} </h1>
+        <h1> {{ cat.name }} </h1>
+        <p>{{ cat.description }}</p>
+         <get-cat-image :breedId="cat.id"></get-cat-image>
 
-        <b-button>Randomize</b-button>
+        <b-button v-on:click="reload()">Randomize</b-button>
+
     </b-container>
 </div>
 </template>
@@ -13,33 +16,27 @@ import {
     useRoute
 } from "vue-router";
 import axios from "axios";
+import GetCatImage from '@/components/GetCatImage'
+
+
+
+
 
 export default {
-
-    data() {
-        return {
-            randomName: "",
-            
-        };
+    components: {
+        "get-cat-image": GetCatImage
+    },
+    computed: {
+        cat() {
+            return this.$store.state.cats[Math.floor(Math.random() * this.$store.state.cats.length)]                
+        }
     },
 
-    beforeMount() {
-        const headers = {
-            "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
-        };
-        axios
-            .get("https://api.thecatapi.com/v1/breeds", {
-                headers,
-
-            })
-            .then(response => {
-
-                 this.randomName = response.data[Math.floor(Math.random() * 67)].name;
-             
-            })
-            .catch(error => console.log(error));
+    methods: {
+        reload() {
+            location.reload();
+        }
     }
-
 }
 </script>
 
