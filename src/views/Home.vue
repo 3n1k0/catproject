@@ -1,8 +1,11 @@
 <template>
 <b-container fluid>
     <form-container>
+        <p>Sort by:</p>
+        
         <b-form-select v-model="selectedSortingMethod" :options="sortingOptions" id="dropdown-1" text="Sorting" class="m-md-2">
         </b-form-select>
+        <p> Categories:</p>
         <b-form-select v-model="selectedCategory" :options="categories" id="dropdown-2" text="Categories" class="m-md-2">
         </b-form-select>
     </form-container>
@@ -118,7 +121,7 @@ export default {
                 },
                 {
                     value: '',
-                    text: "helloooo"
+                    text: "Please select a category"
                 },
 
             ],
@@ -129,16 +132,15 @@ export default {
 </script>
 
 <style>
-
-
 .m-md-2 {
     width: 300px;
 }
 
-form-container{
-    display: flex;
+form-container {
+    display: grid;
+    grid-column: 1fr 1fr;
+    align-items: center;
     justify-content: center;
+    padding: 30px;
 }
-
-
 </style>

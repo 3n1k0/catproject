@@ -3,11 +3,15 @@
     <b-col>
         <router-link :to="`/detailpage/${breedId}`">
             <b-card style="max-width:20rem" class="mb-2">
-                <img :src="image" style="max-width:20rem" img-alt="cat" img-top tag="article" />
+          
+                <img :src="image"  style="max-width:20rem" img-alt="cat" img-top tag="article" />
+              
+          
+                <div slot="error">error message</div>
                 <b-card-text>
                     <h2>{{ title }}</h2>
                 </b-card-text>
-                <b-button variant="outline-info" >
+                <b-button variant="outline-info">
                     <router-link :to="`/detailpage/${breedId}`">Learn more</router-link>
                 </b-button>
                 <b-card-footer>
@@ -22,7 +26,9 @@
 <script>
 import axios from "axios";
 
+
 export default {
+
     props: {
         title: String,
         summary: String,
@@ -59,8 +65,8 @@ export default {
 
 <style lang="scss" scoped>
 .cat-card {
- 
-     text-decoration: none;
+
+    text-decoration: none;
     border-radius: 20px;
     background: transparent;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
@@ -87,13 +93,12 @@ export default {
 }
 
 h2 {
-        font-family: 'Rubik', sans-serif;
-        text-decoration: none;
-        color: #b83b5e;
-        margin-bottom: 30px;
-        margin-top: 10px;
+    font-family: 'Rubik', sans-serif;
+    text-decoration: none;
+    color: #b83b5e;
+    margin-bottom: 30px;
+    margin-top: 10px;
 
-    
 }
 
 .cat-card img {
@@ -103,17 +108,17 @@ h2 {
     object-fit: cover;
 }
 
-b-button{
+b-button {
     background: #b83b5e;
-    
+
 }
 
 .btn-outline-info {
     background: #f08a5d;
     margin-bottom: 10px;
-     border: none;
-     padding: 12px;
-     font-weight: 600;
+    border: none;
+    padding: 12px;
+    font-weight: 600;
 }
 
 .btn-outline-info a {
@@ -125,14 +130,12 @@ b-button{
     display: flex;
     flex-direction: column;
     padding: 0.75rem 1.25rem;
-    background-color: rgba(0,0,0,.03);
-    border-top: 1px solid rgba(0,0,0,.125);
+    background-color: rgba(0, 0, 0, .03);
+    border-top: 1px solid rgba(0, 0, 0, .125);
     font-family: 'Rubik', sans-serif;
-    color: #f08a5d;
+    color: black;
+    opacity: 0.5;
     font-size: 15px;
-   
-    
+
 }
-
-
 </style>
