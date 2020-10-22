@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container">
     <h1>{{ cat.name }}</h1>
 
     <p>{{ cat.description }}</p>
@@ -21,23 +21,20 @@
     <p v-if="pet"><i class="fas fa-vial"></i>Social needs: {{ cat.social_needs }}</p>
     <p v-if="pet"><i class="fas fa-vial"></i>Stranger friendly: {{ cat.stranger_friendly }}</p>
 
-    <div>
-        <h1>Cats just as smart as this one:</h1>
-
+    <h1>Cats just as smart as the {{cat.name}}:</h1>
+    <div class="recommended">
         <div v-for="cat in smartCats" :key="cat.name">
             <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
         </div>
+    </div>
 
-        <!-- <ul>
-            <li v-for="cat in smartCats" :key="cat.name">{{cat.name}}</li>
-        </ul> -->
-
-        <h1>Cats just as loving as this one:</h1>
+    <h1>Cats just as loving as the {{cat.name}}</h1>
+    <div class="recommended">
         <div v-for="cat in lovingCats" :key="cat.name">
             <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
         </div>
-
     </div>
+
 </div>
 </template>
 
@@ -73,7 +70,6 @@ export default {
 
     computed: {
         cat() {
-
             return this.$store.state.cats.find((cat) => {
                 return cat.id === this.breedId
             })
@@ -89,13 +85,13 @@ export default {
 
         smartCats() {
             return this.$store.state.cats.filter(cat =>
-                cat.intelligence === this.cat.intelligence
+                cat.intelligence === this.cat.intelligence && this.cat.name != cat.name
             ).slice(0, 3)
         },
 
         lovingCats() {
             return this.$store.state.cats.filter(cat =>
-                cat.intelligence === this.cat.intelligence
+                cat.affection_level === this.cat.affection_level && this.cat.name != cat.name
             ).slice(0, 3)
         }
     },
@@ -105,4 +101,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.recommended {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 550px;
+    margin: 50px
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 100px;
+}
+</style>

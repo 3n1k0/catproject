@@ -1,10 +1,12 @@
 <template>
 <footer>
-    
+    <p>Sitemap</p>
     <ul>
+        <li><router-link to="/"><u>Home</u></router-link></li>
         <li v-for="cat in cats" :key="cat.name">
             <router-link :to="`/detailpage/${cat.id}`">{{cat.name}}</router-link>
         </li>
+        <li><router-link to="/random"><u>Random</u></router-link></li>
     </ul>
     <p>Designed and coded with ❤︎ by Enikő.</p>
 </footer>
@@ -37,7 +39,10 @@ footer {
     background: rgba(0, 0, 0, 0.8);
     display: grid;
     align-content: space-around;
-  
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;  
 
 }
 
@@ -45,8 +50,7 @@ footer p {
 
      color: #eeecda;
      opacity: 0.2;
-     position: relative;
-     bottom: 5px;
+
        font-size: 18px;
        font-family: 'Rubik', sans-serif;
 }

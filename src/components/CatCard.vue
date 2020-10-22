@@ -11,8 +11,8 @@
                 <b-card-text>
                     <h2>{{ title }}</h2>
                 </b-card-text>
-                <b-button variant="outline-info">
-                    <router-link :to="`/detailpage/${breedId}`">Learn more</router-link>
+                <b-button v-on:click="scrollToTop()" variant="outline-info">
+                    <router-link   :to="`/detailpage/${breedId}`">Learn more</router-link>
                 </b-button>
                 <b-card-footer>
                     <p>{{ temperament }}</p>
@@ -28,6 +28,11 @@ import axios from "axios";
 
 
 export default {
+    methods: { 
+           scrollToTop() {
+                window.scrollTo(0,0);
+           }
+        },
 
     props: {
         title: String,
@@ -106,6 +111,7 @@ h2 {
     max-height: 200px;
     height: 200px;
     object-fit: cover;
+    object-position: 50% 50%
 }
 
 b-button {
@@ -136,6 +142,7 @@ b-button {
     color: black;
     opacity: 0.5;
     font-size: 15px;
+
 
 }
 </style>

@@ -44,46 +44,38 @@ export default {
 
         cats() {
 
-            const catArray = this.$store.state.cats;
+            let catArray = this.$store.state.cats;
 
             if (this.selectedCategory === 'intelligent') {
-                return catArray.filter((cat: Cat) => {
-                    return cat.intelligence === 5;
+                catArray = catArray.filter((cat: Cat) => {
+                    return cat.intelligence === 1;
                 })
 
             } else if (this.selectedCategory === 'dog_friendly') {
-                return catArray.filter((cat: Cat) => {
-                    return cat.dog_friendly === 5;
-
+                catArray = catArray.filter((cat: Cat) => {
+                    return cat.dog_friendly === 2;
                 })
             } else if (this.selectedCategory === 'affection_level') {
-                return catArray.filter((cat: Cat) => {
-                    return cat.affection_level === 5;
-
+                catArray = catArray.filter((cat: Cat) => {
+                    return cat.affection_level === 3;
                 })
             } else if (this.selectedCategory === 'indoor') {
-                return catArray.filter((cat: Cat) => {
+                catArray = catArray.filter((cat: Cat) => {
                     return !cat.indoor;
-
                 })
-
             } else if (this.selectedCategory === 'energy_level') {
-                return catArray.filter((cat: Cat) => {
-                    return cat.energy_level;
-
+                catArray = catArray.filter((cat: Cat) => {
+                    return cat.energy_level === 1;
                 })
             }
 
-            if (this.selectedSortingMethod === 'A-Z') {
-                return catArray.slice(0, 10)
-            } else {
-                const sortedCats = catArray.slice().sort((aCat: Cat, bCat: Cat) => {
+            if (this.selectedSortingMethod === 'Z-A') {
+                catArray = catArray.slice().sort((aCat: Cat, bCat: Cat) => {
                     return aCat.name > bCat.name ? -1 : 1;
                 });
-
-                return sortedCats.slice(0, 10);
             }
 
+            return catArray.slice(0, 10);
         }
     },
 
@@ -142,5 +134,6 @@ form-container {
     align-items: center;
     justify-content: center;
     padding: 30px;
+    margin-top: 70px;
 }
 </style>
