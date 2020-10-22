@@ -3,7 +3,8 @@
     <b-form-select v-model="selectedSortingMethod" :options="sortingOptions" id="dropdown-1" text="Sorting" class="m-md-2">
     </b-form-select>
 
-    <b-form-select v-model="selectedCategory"  :options="categories" id="dropdown-2" text="Categories" class="m-md-2">Categories
+    <b-form-select v-model="selectedCategory" :options="categories" id="dropdown-2" text="Categories" class="m-md-2">
+
     </b-form-select>
 
     <b-row align-v="center">
@@ -42,28 +43,28 @@ export default {
             console.log(catArray)
 
             if (this.selectedCategory === 'intelligent') {
-              return  catArray.filter((cat: Cat) => {
+                return catArray.filter((cat: Cat) => {
                     return cat.intelligence === 5;
                 })
 
             } else if (this.selectedCategory === 'dog_friendly') {
-              return catArray.filter((cat: Cat) => {
+                return catArray.filter((cat: Cat) => {
                     return cat.dog_friendly === 5;
 
                 })
             } else if (this.selectedCategory === 'affection_level') {
-              return catArray.filter((cat: Cat) => {
+                return catArray.filter((cat: Cat) => {
                     return cat.affection_level === 5;
 
                 })
             } else if (this.selectedCategory === 'indoor') {
-              return catArray.filter((cat: Cat) => {
+                return catArray.filter((cat: Cat) => {
                     return !cat.indoor;
 
                 })
 
             } else if (this.selectedCategory === 'energy_level') {
-              return catArray.filter((cat: Cat) => {
+                return catArray.filter((cat: Cat) => {
                     return cat.energy_level;
 
                 })
@@ -113,11 +114,14 @@ export default {
                 {
                     value: 'energy_level',
                     text: "Most active"
-                }
-                
+                },
+                  {
+                    value: '',
+                    text: "helloooo"
+                },
 
             ],
-            selectedCategory: "intelligent"
+            selectedCategory: ''
         }
     }
 };
