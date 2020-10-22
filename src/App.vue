@@ -27,6 +27,21 @@ export default class Home extends Vue {}
 </script>
 
 <style>
+body {
+  overscroll-behavior-y: none;
+  background: #eeecda;
+  
+}
+*{
+
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
+}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -35,16 +50,27 @@ export default class Home extends Vue {}
   color: #2c3e50;
 }
 
+
+  a:hover{
+text-decoration: none;
+  }
+
+
 #nav {
-  padding: 30px;
+  padding: 0px;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #edc988;
+}
+
+.bg-info{
+  background: #6a2c70!important;
+  opacity: 0.9;
 }
 </style>

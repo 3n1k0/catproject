@@ -22,12 +22,12 @@ export default {
     mounted() {
         const headers = {
             "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
-        };
+        }; console.log(this.breedId)
         axios
             .get("https://api.thecatapi.com/v1/images/search", {
                 headers,
                 params: {
-                    "id": this.breedId
+                    "breed_id": this.breedId
                 }
             })
             .then(response => {
@@ -46,7 +46,7 @@ export default {
                 .get("https://api.thecatapi.com/v1/images/search", {
                     headers,
                     params: {
-                        "id": this.breedId
+                        "breed_id": this.breedId
                     }
                 })
                 .then(response => {

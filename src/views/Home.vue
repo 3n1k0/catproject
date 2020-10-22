@@ -1,16 +1,18 @@
 <template>
-<b-container>
-    <b-form-select v-model="selectedSortingMethod" :options="sortingOptions" id="dropdown-1" text="Sorting" class="m-md-2">
-    </b-form-select>
+<b-container fluid>
+    <form-container>
+        <b-form-select v-model="selectedSortingMethod" :options="sortingOptions" id="dropdown-1" text="Sorting" class="m-md-2">
+        </b-form-select>
+        <b-form-select v-model="selectedCategory" :options="categories" id="dropdown-2" text="Categories" class="m-md-2">
+        </b-form-select>
+    </form-container>
 
-    <b-form-select v-model="selectedCategory" :options="categories" id="dropdown-2" text="Categories" class="m-md-2">
+    <b-row align-v="center" align-h="center">
 
-    </b-form-select>
-
-    <b-row align-v="center">
         <div v-for="cat in cats" :key="cat.name">
             <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
         </div>
+
     </b-row>
 </b-container>
 </template>
@@ -40,7 +42,6 @@ export default {
         cats() {
 
             const catArray = this.$store.state.cats;
-            console.log(catArray)
 
             if (this.selectedCategory === 'intelligent') {
                 return catArray.filter((cat: Cat) => {
@@ -71,13 +72,13 @@ export default {
             }
 
             if (this.selectedSortingMethod === 'A-Z') {
-                return catArray.slice(0, 11)
+                return catArray.slice(0, 10)
             } else {
                 const sortedCats = catArray.slice().sort((aCat: Cat, bCat: Cat) => {
                     return aCat.name > bCat.name ? -1 : 1;
                 });
 
-                return sortedCats.slice(0, 11);
+                return sortedCats.slice(0, 10);
             }
 
         }
@@ -115,7 +116,7 @@ export default {
                     value: 'energy_level',
                     text: "Most active"
                 },
-                  {
+                {
                     value: '',
                     text: "helloooo"
                 },
@@ -126,3 +127,18 @@ export default {
     }
 };
 </script>
+
+<style>
+
+
+.m-md-2 {
+    width: 300px;
+}
+
+form-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+</style>
