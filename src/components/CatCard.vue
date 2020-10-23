@@ -1,18 +1,14 @@
 <template>
-
 <div class="cat-card">
     <b-col>
         <router-link :to="`/detailpage/${breedId}`">
             <b-card style="max-width:20rem" class="mb-2">
-          
-                <img :src="image"  style="max-width:20rem" img-alt="cat" img-top tag="article" />
-              
-        
+                <img :src="image" style="max-width:20rem" img-alt="cat" img-top tag="article" />
                 <b-card-text>
                     <h2>{{ title }}</h2>
                 </b-card-text>
                 <b-button v-on:click="scrollToTop()" variant="outline-info">
-                    <router-link   :to="`/detailpage/${breedId}`">Learn more</router-link>
+                    <router-link :to="`/detailpage/${breedId}`">Learn more</router-link>
                 </b-button>
                 <b-card-footer>
                     <p>{{ temperament }}</p>
@@ -21,18 +17,18 @@
         </router-link>
     </b-col>
 </div>
-
 </template>
 
 <script lang="ts">
 import axios from "axios";
+import Vue from "vue";
 
-export default {
-    methods: { 
-           scrollToTop() {
-                window.scrollTo(0,0);
-           }
-        },
+export default Vue.extend({
+    methods: {
+        scrollToTop() {
+            window.scrollTo(0, 0);
+        }
+    },
 
     props: {
         title: String,
@@ -40,7 +36,7 @@ export default {
         breedId: String
     },
 
-    data() {
+    data(): { image: string, temperament: string } {
         return {
             image: "",
             temperament: ""
@@ -64,7 +60,7 @@ export default {
             })
             .catch(error => console.log(error));
     }
-}
+});
 </script>
 
 <style lang="scss" scoped>

@@ -2,24 +2,16 @@
 <b-container fluid>
     <div class="form-container">
         <p>Sort by:</p>
-    
-    //Sorting 
-
         <b-form-select v-model="selectedSortingMethod" :options="sortingOptions" id="dropdown-1" text="Sorting" class="m-md-2">
         </b-form-select>
-
-
         <p> Categories:</p>
         <b-form-select v-model="selectedCategory" :options="categories" id="dropdown-2" text="Categories" class="m-md-2">
         </b-form-select>
     </div>
-
     <b-row align-v="center" align-h="center">
-
         <div v-for="cat in cats" :key="cat.name">
             <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
         </div>
-
     </b-row>
 </b-container>
 </template>
@@ -27,6 +19,7 @@
 <script lang="ts">
 import CatCard from "@/components/CatCard.vue";
 import axios from "axios";
+import Vue from 'vue';
 
 export interface Cat {
     name: string;
@@ -38,17 +31,15 @@ export interface Cat {
     energy_level: number;
 }
 
-export default {
+export default Vue.extend({
     name: "home",
     components: {
         "cat-card": CatCard
     },
-
     computed: {
+        cats(): Array < Cat > {
 
-        cats(): Array<Cat> {
-
-            let catArray: Array<Cat> = this.$store.state.cats;
+            let catArray: Array < Cat > = this.$store.state.cats;
 
             if (this.selectedCategory === 'intelligent') {
                 catArray = catArray.filter((cat: Cat): boolean => {
@@ -73,8 +64,6 @@ export default {
                 })
             }
 
-
-
             if (this.selectedSortingMethod === 'Z-A') {
                 catArray = catArray.slice().sort((aCat: Cat, bCat: Cat) => {
                     return aCat.name > bCat.name ? -1 : 1;
@@ -85,7 +74,12 @@ export default {
         }
     },
 
-    data() {
+    data(): {
+        selectedCategory: string,
+        sortingOptions: Array<{ value: string, text: string}>,
+        selectedSortingMethod: string,
+        categories: Array<{ value: string, text: string}>
+    } {
         return {
             sortingOptions: [{
                     value: "A-Z",
@@ -126,7 +120,7 @@ export default {
             selectedCategory: ''
         }
     }
-};
+});
 </script>
 
 <style>

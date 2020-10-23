@@ -18,8 +18,9 @@
 
 <script lang="ts">
 import axios from "axios";
+import Vue from "vue";
 
-export default {
+export default Vue.extend({
     props: {
         breedId: String
     },
@@ -29,7 +30,7 @@ export default {
             return this.$store.state.cats.slice(0, 11)
         }
     }
-}
+});
 </script>
 
 <style lang="scss" scoped>

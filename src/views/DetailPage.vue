@@ -66,16 +66,13 @@
 </template>
 
 <script lang="ts">
-import {
-    useRoute
-} from "vue-router";
 import axios from "axios";
 import {
-    Component,
-    Vue
+    Component
 } from "vue-property-decorator";
 import GetCatImage from '@/components/GetCatImage.vue';
 import CatCard from "@/components/CatCard.vue";
+import Vue from 'vue';
 
 export interface Cat {
     name: string;
@@ -88,7 +85,7 @@ export interface Cat {
     energy_level: number;
 }
 
-export default {
+export default Vue.extend({
     components: {
         "get-cat-image": GetCatImage,
         "cat-card": CatCard
@@ -116,13 +113,13 @@ export default {
             return this.cat.lap === 0 ? 'No' : 'Yes'
         },
 
-        smartCats(): Array<Cat> {
+        smartCats(): Array < Cat > {
             return this.$store.state.cats.filter((cat: Cat): boolean =>
                 cat.intelligence === this.cat.intelligence && this.cat.name != cat.name
             ).slice(0, 3)
         },
 
-        lovingCats(): Array<Cat> {
+        lovingCats(): Array < Cat > {
             return this.$store.state.cats.filter((cat: Cat): boolean =>
                 cat.affection_level === this.cat.affection_level && this.cat.name != cat.name
             ).slice(0, 3)
@@ -131,7 +128,7 @@ export default {
 
     props: ["breedId"],
 
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -139,7 +136,6 @@ export default {
     justify-content: center;
     display: grid;
     padding-top: 120px;
-
 }
 
 .row {

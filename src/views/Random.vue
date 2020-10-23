@@ -11,9 +11,7 @@
 </template>
 
 <script lang="ts">
-import {
-    useRoute
-} from "vue-router";
+import Vue from 'vue';
 import axios from "axios";
 import GetCatImage from '@/components/GetCatImage.vue'
 
@@ -27,7 +25,7 @@ export interface Cat {
     energy_level: number;
 }
 
-export default {
+export default Vue.extend({
     components: {
         "get-cat-image": GetCatImage
     },
@@ -41,7 +39,7 @@ export default {
             location.reload();
         }
     }
-}
+})
 </script>
 
 <style lang="scss" scoped>

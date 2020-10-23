@@ -3,17 +3,15 @@
 </template>
 
 <script lang="ts">
-import {
-    useRoute
-} from "vue-router";
 import axios from "axios";
+import Vue from 'vue';
 
-export default {
+export default Vue.extend({
     props: {
         breedId: String
     },
 
-    data() {
+    data(): { url: string } {
         return {
             url: ''
         }
@@ -55,7 +53,7 @@ export default {
                 .catch(error => console.log(error));
         }
     }
-}
+});
 </script>
 
 <style lang="scss" scoped>
