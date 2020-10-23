@@ -10,7 +10,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import store from './store'
 import TopHeader from "@/components/TopHeader.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 
@@ -20,7 +19,7 @@ import FooterComponent from "@/components/FooterComponent.vue";
     "footer-component": FooterComponent
   },
   async mounted() {
-    this.$store.dispatch('loadCats');
+    this.$store.dispatch("loadCats");
   }
 })
 export default class Home extends Vue {}
@@ -30,16 +29,14 @@ export default class Home extends Vue {}
 body {
   overscroll-behavior-y: none;
   background: #eeecda;
-  
 }
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
   list-style: none;
 }
-
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -49,11 +46,9 @@ body {
   color: #2c3e50;
 }
 
-
-  a:hover{
-text-decoration: none;
-  }
-
+a:hover {
+  text-decoration: none;
+}
 
 #nav {
   position: fixed;
@@ -72,8 +67,8 @@ text-decoration: none;
   color: #edc988;
 }
 
-.bg-info{
-  background: #6a2c70!important;
+.bg-info {
+  background: #6a2c70 !important;
   opacity: 0.9;
 }
 </style>

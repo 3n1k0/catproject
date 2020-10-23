@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-export default {}
+export default {};
 </script>
 
 <style scoped>
@@ -38,9 +38,7 @@ a {
   color: #42b983;
 }
 
-navbar .navbar-dark bg-info navbar-expand-lg{
+navbar .navbar-dark bg-info navbar-expand-lg {
   position: fixed;
 }
-
 </style>
-

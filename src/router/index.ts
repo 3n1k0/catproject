@@ -18,10 +18,9 @@ const routes: Array<RouteConfig> = [
     name: "Random",
     component: Random,
     props: true
-  
   },
   {
-   path: "/detailpage/:breedId",
+    path: "/detailpage/:breedId",
     name: "Detail",
     component: DetailPage,
     props: true
