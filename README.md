@@ -1,10 +1,8 @@
-# catproject
-
 # Catcyclopedia
 
 ## Description
 
-Catcyclopedia is a responsive single page website build to showcase Vue and Typescript skills. It is based on the [Cat API](https://thecatapi.com/) and uses some Bootstrap Vue components.
+Catcyclopedia is a responsive single page website build to showcase Vue and Typescript skills. It is based on the [Cat API](https://thecatapi.com/) and uses Bootstrap Vue components.
 
 ## Views
 
@@ -16,25 +14,25 @@ It contains CatCards that lead to their own detail pages.
 ### DetailPage
 
 Detailed information on each API record initially rendered on the home page.
-It contains two times three related items - CatCards - based on certain criteria (intelligence, affection level).
+It contains two times three related items - [CatCards](https://github.com/3n1k0/catproject#catcard) - based on certain criteria (intelligence, affection level).
 
 The qualities featured on the detail page are:
 
-- [Energy level]
-- [Intelligence]
-- [Affection level]
-- [Child friendly]
-- [Experimental]
-- [Dog friendly]
-- [Suitable for indoors]
-- [Dog friendly]
-- [Adaptibility]
-- [Shedding level]
-- [Social needs]
-- [Dog friendly]
-- [Stranger friendly]
+- Energy level
+- Intelligence
+- Affection level
+- Child friendly
+- Experimental
+- Dog friendly
+- Suitable for indoors
+- Dog friendly
+- Adaptibility
+- Shedding level
+- Social needs
+- Dog friendly
+- Stranger friendly
 
-<em>Some of the data from the record are not featured because of unclarity (eg.: health issues from 1 to 5, grooming from 0 to 1 etc.)</em>
+<em>Some of the data from the records are not featured because of unclarity (eg.: health issues from 1 to 5, grooming from 0 to 1 etc.)</em>
 
 ### Random
 
