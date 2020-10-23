@@ -73,7 +73,7 @@ export default {
                 })
             }
 
-// Checks if the selected sorting method is from Z to A and if so, returns 10 cats in this order. 
+
 
             if (this.selectedSortingMethod === 'Z-A') {
                 catArray = catArray.slice().sort((aCat: Cat, bCat: Cat) => {
