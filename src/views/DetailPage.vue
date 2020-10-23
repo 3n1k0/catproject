@@ -1,5 +1,6 @@
 <template>
-<div class="container">
+<b-container class="container">
+
     <h1>{{ cat.name }}</h1>
 
     <p>{{ cat.description }}</p>
@@ -22,20 +23,31 @@
     <p v-if="pet"><i class="fas fa-vial"></i>Stranger friendly: {{ cat.stranger_friendly }}</p>
 
     <h1>Cats just as smart as the {{cat.name}}:</h1>
+
     <div class="recommended">
-        <div v-for="cat in smartCats" :key="cat.name">
-            <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
-        </div>
+        <b-row align-v="center" align-h="center">
+            <div class='recommended-card' v-for="cat in smartCats" :key="cat.name">
+                <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
+            </div>
+        </b-row>
     </div>
 
     <h1>Cats just as loving as the {{cat.name}}</h1>
+
     <div class="recommended">
-        <div v-for="cat in lovingCats" :key="cat.name">
-            <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
-        </div>
+        <b-row class="row" align-v="center" align-h="center">
+           
+            <div div class='recommended-card' v-for="cat in lovingCats" :key="cat.name">
+            
+                <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
+            
+                
+            </div>
+        
+        </b-row>
     </div>
 
-</div>
+</b-container>
 </template>
 
 grooming: 1,
@@ -102,17 +114,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.recommended {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 550px;
-    margin: 50px
-}
 
 .container {
-    width: 100%;
-    min-height: 100vh;
+    justify-content: center;
+    display: grid;
+
     padding-top: 100px;
 }
+
+.row {
+    width: 100vw;
+}
+
 </style>

@@ -1,4 +1,5 @@
 <template>
+
 <div class="cat-card">
     <b-col>
         <router-link :to="`/detailpage/${breedId}`">
@@ -21,6 +22,7 @@
         </router-link>
     </b-col>
 </div>
+
 </template>
 
 <script>
@@ -84,10 +86,10 @@ export default {
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 85%;
+    width: 80%;
     padding: 20px;
     margin: 30px;
-    max-height: 100%;
+
 
     &:hover {
         transform: scale(1.05);
@@ -103,6 +105,7 @@ h2 {
     color: #b83b5e;
     margin-bottom: 30px;
     margin-top: 10px;
+    font-size: 25px;
 
 }
 
@@ -141,7 +144,7 @@ b-button {
     font-family: 'Rubik', sans-serif;
     color: black;
     opacity: 0.5;
-    font-size: 15px;
+    font-size: 13px;
 
 
 }
