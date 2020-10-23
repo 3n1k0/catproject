@@ -24,9 +24,8 @@
 
 </template>
 
-<script>
+<script lang="ts">
 import axios from "axios";
-
 
 export default {
     methods: { 
@@ -39,7 +38,6 @@ export default {
         title: String,
         summary: String,
         breedId: String
-
     },
 
     data() {
@@ -71,7 +69,6 @@ export default {
 
 <style lang="scss" scoped>
 .cat-card {
-
     text-decoration: none;
     border-radius: 20px;
     background: transparent;
@@ -89,13 +86,11 @@ export default {
     padding: 20px;
     margin: 30px;
 
-
     &:hover {
         transform: scale(1.05);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
         text-decoration: none;
     }
-
 }
 
 h2 {
@@ -105,7 +100,6 @@ h2 {
     margin-bottom: 30px;
     margin-top: 10px;
     font-size: 25px;
-
 }
 
 .cat-card img {
@@ -118,7 +112,6 @@ h2 {
 
 b-button {
     background: #b83b5e;
-
 }
 
 .btn-outline-info {
@@ -144,7 +137,5 @@ b-button {
     color: black;
     opacity: 0.5;
     font-size: 13px;
-
-
 }
 </style>

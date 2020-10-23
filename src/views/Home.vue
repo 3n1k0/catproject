@@ -1,14 +1,18 @@
 <template>
 <b-container fluid>
-    <form-container>
+    <div class="form-container">
         <p>Sort by:</p>
-        
+    
+    //Sorting 
+
         <b-form-select v-model="selectedSortingMethod" :options="sortingOptions" id="dropdown-1" text="Sorting" class="m-md-2">
         </b-form-select>
+
+
         <p> Categories:</p>
         <b-form-select v-model="selectedCategory" :options="categories" id="dropdown-2" text="Categories" class="m-md-2">
         </b-form-select>
-    </form-container>
+    </div>
 
     <b-row align-v="center" align-h="center">
 
@@ -24,7 +28,7 @@
 import CatCard from "@/components/CatCard.vue";
 import axios from "axios";
 
-interface Cat {
+export interface Cat {
     name: string;
     id: string;
     dog_friendly: number;
@@ -42,32 +46,34 @@ export default {
 
     computed: {
 
-        cats() {
+        cats(): Array<Cat> {
 
-            let catArray = this.$store.state.cats;
+            let catArray: Array<Cat> = this.$store.state.cats;
 
             if (this.selectedCategory === 'intelligent') {
-                catArray = catArray.filter((cat: Cat) => {
+                catArray = catArray.filter((cat: Cat): boolean => {
                     return cat.intelligence === 3;
                 })
 
             } else if (this.selectedCategory === 'dog_friendly') {
-                catArray = catArray.filter((cat: Cat) => {
+                catArray = catArray.filter((cat: Cat): boolean => {
                     return cat.dog_friendly === 2;
                 })
             } else if (this.selectedCategory === 'affection_level') {
-                catArray = catArray.filter((cat: Cat) => {
+                catArray = catArray.filter((cat: Cat): boolean => {
                     return cat.affection_level === 3;
                 })
             } else if (this.selectedCategory === 'indoor') {
-                catArray = catArray.filter((cat: Cat) => {
+                catArray = catArray.filter((cat: Cat): boolean => {
                     return !cat.indoor;
                 })
             } else if (this.selectedCategory === 'energy_level') {
-                catArray = catArray.filter((cat: Cat) => {
+                catArray = catArray.filter((cat: Cat): boolean => {
                     return cat.energy_level === 1;
                 })
             }
+
+// Checks if the selected sorting method is from Z to A and if so, returns 10 cats in this order. 
 
             if (this.selectedSortingMethod === 'Z-A') {
                 catArray = catArray.slice().sort((aCat: Cat, bCat: Cat) => {
@@ -93,15 +99,15 @@ export default {
             selectedSortingMethod: "A-Z",
             categories: [{
                     value: "dog_friendly",
-                    text: "Most dog friendly"
+                    text: "Least dog friendly"
                 },
                 {
                     value: "intelligent",
-                    text: "Most intelligent"
+                    text: "Not too smart but sweet"
                 },
                 {
                     value: "affection_level",
-                    text: "Most loving"
+                    text: "Most independent"
                 },
                 {
                     value: 'indoor',
@@ -109,7 +115,7 @@ export default {
                 },
                 {
                     value: 'energy_level',
-                    text: "Most active"
+                    text: "Laziest cats"
                 },
                 {
                     value: '',
@@ -128,7 +134,7 @@ export default {
     width: 300px;
 }
 
-form-container {
+.form-container {
     display: grid;
     grid-column: 1fr 1fr;
     align-items: center;

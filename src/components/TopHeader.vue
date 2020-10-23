@@ -3,9 +3,7 @@
     <div>
       <b-navbar toggleable="lg" type="dark" variant="info">
         <b-navbar-brand href="/">Catcyclopedia</b-navbar-brand>
-
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item>
@@ -23,11 +21,7 @@
 
 <script lang="ts"></script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style scoped>
-
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -41,7 +35,6 @@ li {
 a {
   color: #42b983;
 }
-
 
 navbar .navbar-dark bg-info navbar-expand-lg{
   position: fixed;

@@ -2,7 +2,7 @@
 <img :src="url" style="max-width:20rem" img-alt="cat" img-top tag="article" />
 </template>
 
-<script>
+<script lang="ts">
 import {
     useRoute
 } from "vue-router";
@@ -22,7 +22,7 @@ export default {
     mounted() {
         const headers = {
             "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
-        }; console.log(this.breedId)
+        };
         axios
             .get("https://api.thecatapi.com/v1/images/search", {
                 headers,
@@ -37,7 +37,6 @@ export default {
             .catch(error => console.log(error));
     },
     watch: {
-
         breedId() {
             const headers = {
                 "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
@@ -56,10 +55,8 @@ export default {
                 .catch(error => console.log(error));
         }
     }
-
 }
 </script>
 
 <style lang="scss" scoped>
-
 </style>

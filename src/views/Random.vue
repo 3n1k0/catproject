@@ -3,35 +3,39 @@
     <div class="container">
         <h1> {{ cat.name }} </h1>
         <p>{{ cat.description }}</p>
-         <get-cat-image style="max-width:40rem" :breedId="cat.id"></get-cat-image>
-
+        <h3><router-link :to="`/detailpage/${cat.id}`" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>   Read more about the {{ cat.name }}</router-link></h3>
+        <get-cat-image style="max-width:40rem" :breedId="cat.id"></get-cat-image>
         <b-button variant="info" v-on:click="reload()">Randomize</b-button>
-
     </div>
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import {
     useRoute
 } from "vue-router";
 import axios from "axios";
-import GetCatImage from '@/components/GetCatImage'
+import GetCatImage from '@/components/GetCatImage.vue'
 
-
-
-
+export interface Cat {
+    name: string;
+    id: string;
+    dog_friendly: number;
+    intelligence: number;
+    affection_level: number;
+    indoor: boolean;
+    energy_level: number;
+}
 
 export default {
     components: {
         "get-cat-image": GetCatImage
     },
     computed: {
-        cat() {
+        cat(): Cat {
             return this.$store.state.cats[Math.floor(Math.random() * this.$store.state.cats.length)]                
         }
     },
-
     methods: {
         reload() {
             location.reload();
@@ -56,6 +60,19 @@ export default {
 h1 {
     font-family: 'Rubik', sans-serif;
 
+}
+
+h3{
+    font-family: 'Rubik' sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 600;
+    color: #b83b5e;
+    padding: 20px;
+}
+
+a{
+    color: #b83b5e;
 }
 
 button{
