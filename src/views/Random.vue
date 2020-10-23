@@ -1,13 +1,13 @@
 <template>
 <div>
-    <b-container>
+    <div class="container">
         <h1> {{ cat.name }} </h1>
         <p>{{ cat.description }}</p>
-         <get-cat-image :breedId="cat.id"></get-cat-image>
+         <get-cat-image style="max-width:40rem" :breedId="cat.id"></get-cat-image>
 
-        <b-button v-on:click="reload()">Randomize</b-button>
+        <b-button variant="info" v-on:click="reload()">Randomize</b-button>
 
-    </b-container>
+    </div>
 </div>
 </template>
 
@@ -40,4 +40,26 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.container {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    padding-top: 120px;
+    align-content: center;
+    width: 100%;
+
+}
+
+h1 {
+    font-family: 'Rubik', sans-serif;
+
+}
+
+button{
+    margin: 50px 0px ;
+    width: 150px;
+}
+</style>

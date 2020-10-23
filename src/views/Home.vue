@@ -48,7 +48,7 @@ export default {
 
             if (this.selectedCategory === 'intelligent') {
                 catArray = catArray.filter((cat: Cat) => {
-                    return cat.intelligence === 1;
+                    return cat.intelligence === 3;
                 })
 
             } else if (this.selectedCategory === 'dog_friendly') {

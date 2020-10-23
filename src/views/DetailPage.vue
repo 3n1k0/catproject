@@ -1,50 +1,64 @@
 <template>
 <b-container class="container">
 
-    <h1>{{ cat.name }}</h1>
+    <b-row>
+        <b-col>
+            <h1>{{ cat.name }}</h1>
+            <div class="catscription">
+                <div class="header"><span><i class="fas fa-map-marker"></i><b>Origin:</b> {{ cat.origin }}/{{cat.country_code}}</span> <span><i class="fab fa-gratipay"></i> <b>Lifespan:</b> {{ cat.life_span }} years</span></div>
 
-    <p>{{ cat.description }}</p>
-    <get-cat-image :breedId="cat.id"></get-cat-image>
-    <p><i class="fas fa-plug"></i>Energy level: {{ cat.energy_level }}/5</p>
-    <p v-if="cat.alt_names"><i class="fas fa-plug"></i>Other names: {{ cat.alt_names }}</p>
-    <p><i class="fas fa-glasses"></i>Intelligence: {{ cat.intelligence }}/5</p>
-    <p><i class="fas fa-heart"></i>Affection level: {{ cat.affection_level }}/5</p>
-    <p><i class="fas fa-dog"></i>Dog friendly: {{ cat.dog_friendly }}/5</p>
-    <p><i class="fas fa-vial"></i>Experimental: {{ cat.experimental }}/5</p>
-    <p><i class="fas fa-vial"></i>Origin: {{ cat.origin }}/ {{cat.country_code}}</p>
-    <p><i class="fas fa-vial"></i>Lifespan: {{ cat.life_span }} years</p>
-    <p><i class="fas fa-vial"></i>Child friendly: {{ cat.child_friendly }} years</p>
-    <p><i class="fas fa-vial"></i>temperament: {{ cat.temperament }}</p>
-    <p><i class="fas fa-vial"></i>Suitable for indoors: {{ indoor }}</p>
-    <p><i class="fas fa-vial"></i>Adaptibility: {{ cat.adaptability }}</p>
-    <p><i class="fas fa-vial"></i>Shedding level: {{ cat.shedding_level }}</p>
-    <p v-if="pet"><i class="fas fa-vial"></i>Loves to be petted: {{ pet }}</p>
-    <p v-if="pet"><i class="fas fa-vial"></i>Social needs: {{ cat.social_needs }}</p>
-    <p v-if="pet"><i class="fas fa-vial"></i>Stranger friendly: {{ cat.stranger_friendly }}</p>
-
-    <h1>Cats just as smart as the {{cat.name}}:</h1>
-
-    <div class="recommended">
-        <b-row align-v="center" align-h="center">
-            <div class='recommended-card' v-for="cat in smartCats" :key="cat.name">
-                <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
+                <p>{{ cat.description }}</p>
             </div>
-        </b-row>
-    </div>
+            <get-cat-image :breedId="cat.id" style="max-width:40rem"></get-cat-image>
 
-    <h1>Cats just as loving as the {{cat.name}}</h1>
+            <ul class="qualities">
 
-    <div class="recommended">
-        <b-row class="row" align-v="center" align-h="center">
-           
-            <div div class='recommended-card' v-for="cat in lovingCats" :key="cat.name">
-            
-                <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
-            
-                
-            </div>
-        
-        </b-row>
+                <div class="wrapper">
+                    <li><i class="fas fa-plug"></i>Energy level: {{cat.energy_level}}/5</li>
+                    <li v-if="cat.alt_names"><i class="fas fa-plug"></i>Other names: {{cat.alt_names}}
+                    </li>
+                    <li><i class="fas fa-glasses"></i>Intelligence: {{cat.intelligence}}/5</li>
+                    <li><i class="fas fa-heart"></i>Affection level: {{ cat.affection_level }}/5</li>
+                    <li><i class="fas fa-dog"></i>Dog friendly: {{ cat.dog_friendly }}/5</li>
+                    <li><i class="fas fa-vial"></i>Experimental: {{ cat.experimental }}/5</li>
+                    <li><i class="fas fa-baby"></i>Child friendly: {{ cat.child_friendly }}/5</li>
+                </div>
+
+                <div class="wrapper">
+                    <li><i class="fas fa-house-user"></i>Suitable for indoors: {{ indoor }}</li>
+                    <li><i class="fas fa-smile-beam"></i>Adaptibility: {{ cat.adaptability }}</li>
+                    <li><i class="fas fa-cat"></i>Shedding level: {{ cat.shedding_level }}</li>
+                    <li v-if="pet"><i class="fas fa-heart"></i>Loves to be petted: {{ pet }}</li>
+                    <li v-if="pet"><i class="fas fa-comments"></i>Social needs: {{ cat.social_needs }}</li>
+                    <li v-if="pet"><i class="fas fa-male"></i>Stranger friendly: {{ cat.stranger_friendly }}</li>
+                </div>
+            </ul>
+
+        </b-col>
+    </b-row>
+    <h2>Cats just as smart as the {{cat.name}}:</h2>
+
+    <div class="recommend-container">
+        <div class="recommended">
+            <b-row align-v="center" align-h="center">
+                <div class='recommended-card' v-for="cat in smartCats" :key="cat.name">
+                    <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
+                </div>
+            </b-row>
+        </div>
+
+        <h2>Cats just as loving as the {{cat.name}}</h2>
+
+        <div class="recommended">
+            <b-row class="row" align-v="center" align-h="center">
+
+                <div div class='recommended-card' v-for="cat in lovingCats" :key="cat.name">
+
+                    <cat-card :title="cat.name" :description="cat.description" :breedId="cat.id"></cat-card>
+
+                </div>
+            </b-row>
+        </div>
     </div>
 
 </b-container>
@@ -64,6 +78,10 @@ import {
     useRoute
 } from "vue-router";
 import axios from "axios";
+import {
+    Component,
+    Vue
+} from "vue-property-decorator";
 import GetCatImage from '@/components/GetCatImage';
 import CatCard from "@/components/CatCard.vue";
 
@@ -114,16 +132,73 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .container {
     justify-content: center;
     display: grid;
+    padding-top: 120px;
 
-    padding-top: 100px;
 }
 
 .row {
     width: 100vw;
 }
 
+h1 {
+    font-family: 'Rubik', sans-serif;
+
+}
+
+h2 {
+    padding: 50px;
+}
+
+.qualities {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    align-items: flex-start;
+    margin: 100px 0px;
+
+}
+
+li {
+    font-family: 'Rubik', sans-serif;
+    font-size: 30px;
+
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    color: #b83b5e;
+
+}
+
+i {
+    margin-right: 50px;
+    color: #f08a5d;
+    font-size: 35px;
+}
+
+.catscription {
+    width: 40rem;
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
+.recommend-container {
+    padding-bottom: 100px;
+}
+
+.header i {
+    color: rgba(28, 23, 23, 0.639);
+    font-size: 20px;
+    margin-right: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
 </style>

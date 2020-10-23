@@ -7,8 +7,7 @@
           
                 <img :src="image"  style="max-width:20rem" img-alt="cat" img-top tag="article" />
               
-          
-                <div slot="error">error message</div>
+        
                 <b-card-text>
                     <h2>{{ title }}</h2>
                 </b-card-text>
