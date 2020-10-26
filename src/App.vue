@@ -29,6 +29,7 @@ export default class Home extends Vue {}
 body {
   overscroll-behavior-y: none;
   background: #eeecda;
+
 }
 * {
   padding: 0;

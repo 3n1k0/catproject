@@ -25,7 +25,6 @@
         </div>
         <get-cat-image
           :breedId="cat.id"
-          style="max-width:40rem"
         ></get-cat-image>
 
         <ul class="qualities">
@@ -195,6 +194,7 @@ export default Vue.extend({
   justify-content: center;
   display: grid;
   padding-top: 120px;
+  width: 100%;
 }
 
 .row {
@@ -221,28 +221,49 @@ h2 {
 
 li {
   font-family: "Rubik", sans-serif;
-  font-size: 30px;
+  font-size: 26px;
   display: flex;
   justify-items: space-between;
+
+  @media only screen and (max-width: 600px) {
+font-size: 12px;
 }
 
+  @media only screen and (maz-width: 1200px) {
+font-size: 20px;
+  }
+
+}
+
+
+
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   justify-content: flex-start;
+  align-items: flex-start;
   color: #b83b5e;
 }
 
 i {
-  margin-right: 50px;
+  margin-right: 20px;
   color: #f08a5d;
   font-size: 35px;
+
+    @media only screen and (max-width: 600px) {
+font-size:15px;
+    }
+
 }
 
 .catscription {
-  width: 40rem;
+  width: 70%;
   margin: 0 auto;
   padding: 20px 0px;
+
+    @media only screen and (max-width: 600px) {
+      width: 90%;
+}
+  
 }
 
 .recommend-container {
@@ -265,4 +286,5 @@ i {
   width: 30px;
   height: 30px;
 }
+
 </style>
