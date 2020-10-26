@@ -12,7 +12,7 @@
           {{ cat.name }}</router-link
         >
       </h3>
-      <get-cat-image style="max-width:40rem" :breedId="cat.id"></get-cat-image>
+      <get-cat-image :breedId="cat.id"></get-cat-image>
       <b-button variant="info" v-on:click="reload()">Randomize</b-button>
     </div>
   </div>
