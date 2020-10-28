@@ -47,6 +47,10 @@ body {
   color: #2c3e50;
 }
 
+a {
+    text-decoration: none;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -72,4 +76,10 @@ a:hover {
   background: #6a2c70 !important;
   opacity: 0.9;
 }
+
+button {
+  width: 150px;
+}
+
+
 </style>

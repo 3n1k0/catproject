@@ -1,35 +1,43 @@
 <template>
-  <b-container fluid>
+  <div class="home-container">
     <div class="form-container">
-      <p>Sort by:</p>
-      <b-form-select
+      <label for="Sorting">Sort by:</label>
+      <select
         v-model="selectedSortingMethod"
         :options="sortingOptions"
-        id="dropdown-1"
-        text="Sorting"
-        class="m-md-2"
+        name="Sorting"
+        id="Sorting"
       >
-      </b-form-select>
-      <p>Categories:</p>
-      <b-form-select
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+      </select>
+
+      <label for="Sorting">Categories:</label>
+      <select
         v-model="selectedCategory"
         :options="categories"
-        id="dropdown-2"
-        text="Categories"
-        class="m-md-2"
+        name="category"
+        id="category"
       >
-      </b-form-select>
+        <option value="dog_friendly">Least dog friendly</option>
+        <option value="intelligent">Not too smart but sweet</option>
+        <option value="affection_level">Most independent</option>
+        <option value="indoor">Best for indoors</option>
+        <option value="energy_level">Laziest cats</option>
+        <option value="indoor">Best for indoors</option>
+      </select>
     </div>
-    <b-row align-v="center" align-h="center">
-      <div v-for="cat in cats" :key="cat.name">
-        <cat-card
-          :title="cat.name"
-          :description="cat.description"
-          :breedId="cat.id"
-        ></cat-card>
-      </div>
-    </b-row>
-  </b-container>
+
+    <div class="card-container">
+      <cat-card
+        v-for="cat in cats"
+        :key="cat.name"
+        :title="cat.name"
+        :description="cat.description"
+        :breedId="cat.id"
+      ></cat-card>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -49,7 +57,7 @@ export interface Cat {
 export default Vue.extend({
   name: "home",
   components: {
-    "cat-card": CatCard
+    "cat-card": CatCard,
   },
   computed: {
     cats(): Array<Cat> {
@@ -84,64 +92,22 @@ export default Vue.extend({
       }
 
       return catArray.slice(0, 10);
-    }
+    },
   },
 
   data(): {
     selectedCategory: string;
-    sortingOptions: Array<{ value: string; text: string }>;
     selectedSortingMethod: string;
-    categories: Array<{ value: string; text: string }>;
   } {
     return {
-      sortingOptions: [
-        {
-          value: "A-Z",
-          text: "A-Z"
-        },
-        {
-          value: "Z-A",
-          text: "Z-A"
-        }
-      ],
       selectedSortingMethod: "A-Z",
-      categories: [
-        {
-          value: "dog_friendly",
-          text: "Least dog friendly"
-        },
-        {
-          value: "intelligent",
-          text: "Not too smart but sweet"
-        },
-        {
-          value: "affection_level",
-          text: "Most independent"
-        },
-        {
-          value: "indoor",
-          text: "Best for indoors"
-        },
-        {
-          value: "energy_level",
-          text: "Laziest cats"
-        },
-        {
-          value: "",
-          text: "Please select a category"
-        }
-      ],
-      selectedCategory: ""
+      selectedCategory: "",
     };
-  }
+  },
 });
 </script>
 
 <style>
-.m-md-2 {
-  width: 300px;
-}
-
 .form-container {
   display: grid;
   grid-column: 1fr 1fr;
@@ -149,5 +115,14 @@ export default Vue.extend({
   justify-content: center;
   padding: 30px;
   margin-top: 70px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(370px, 370px));
+  padding: 80px;
+  grid-gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 </style>

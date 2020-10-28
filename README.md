@@ -2,7 +2,7 @@
 
 ## Description
 
-Catcyclopedia is a responsive single page website build to showcase Vue and Typescript skills. It is based on the [Cat API](https://thecatapi.com/) and uses Bootstrap Vue components.
+Catcyclopedia is a responsive single page website build to showcase Vue and Typescript skills. It is based on the [Cat API](https://thecatapi.com/) and is based of Vue components.
 
 ## Views
 

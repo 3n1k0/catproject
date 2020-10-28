@@ -6,7 +6,7 @@
             <router-link to="/"><u>Home</u></router-link>
         </li>
         <li v-for="cat in cats" :key="cat.name">
-            <router-link :to="`/detailpage/${cat.id}`">{{ cat.name }}</router-link>
+            <router-link  :to="`/detailpage/${cat.id}`">{{ cat.name }}</router-link>
         </li>
         <li>
             <router-link to="/random"><u>Random</u></router-link>

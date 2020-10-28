@@ -1,27 +1,25 @@
 <template>
   <div class="cat-card">
-    <b-col>
-      <router-link :to="`/detailpage/${breedId}`">
-        <b-card style="max-width:20rem" class="mb-2">
-          <img
-            :src="image"
-            style="max-width:20rem"
-            img-alt="cat"
-            img-top
-            tag="article"
-          />
-          <b-card-text>
-            <h2>{{ title }}</h2>
-          </b-card-text>
-          <b-button v-on:click="scrollToTop()" variant="outline-info">
-            <router-link :to="`/detailpage/${breedId}`">Learn more</router-link>
-          </b-button>
-          <b-card-footer>
-            <p>{{ temperament }}</p>
-          </b-card-footer>
-        </b-card>
-      </router-link>
-    </b-col>
+    <router-link :to="`/detailpage/${breedId}`">
+      <div class="card" style="max-width:20rem">
+        <img
+          :src="image"
+          style="max-width:20rem"
+          img-alt="cat"
+          img-top
+          tag="article"
+        />
+        <div class="card-text">
+          <h2>{{ title }}</h2>
+        </div>
+        <button v-on:click="scrollToTop()">
+          <router-link :to="`/detailpage/${breedId}`">Learn more</router-link>
+        </button>
+        <div class="footer">
+          <p>{{ temperament }}</p>
+        </div>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -33,42 +31,42 @@ export default Vue.extend({
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0);
-    }
+    },
   },
 
   props: {
     title: String,
     summary: String,
-    breedId: String
+    breedId: String,
   },
 
   data(): { image: string; temperament: string } {
     return {
       image: "",
-      temperament: ""
+      temperament: "",
     };
   },
 
   mounted() {
     const headers = {
-      "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
+      "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9",
     };
     const breedIdParam = "breed_id";
     axios
       .get("https://api.thecatapi.com/v1/images/search", {
         headers,
         params: {
-          [breedIdParam]: this.breedId
-        }
+          [breedIdParam]: this.breedId,
+        },
       })
-      .then(response => {
+      .then((response) => {
         this.image = response.data[0].url;
         this.temperament = response.data[0].breeds[0].temperament
           .split(",", 3)
           .join(", ");
       })
-      .catch(error => console.log(error));
-  }
+      .catch((error) => console.log(error));
+  },
 });
 </script>
 
@@ -87,7 +85,6 @@ export default Vue.extend({
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 80%;
   padding: 20px;
   margin: 30px;
 
@@ -115,21 +112,35 @@ h2 {
   object-position: 50% 50%;
 }
 
-b-button {
-  background: #b83b5e;
-}
-
-.btn-outline-info {
+button {
   background: #f08a5d;
-  margin-bottom: 10px;
+  margin: 0 auto;
+  cursor: pointer;
   border: none;
   padding: 12px;
   font-weight: 600;
+  color: #eeecda;
+  border-radius: 10px;
+  border: none;
 }
 
-.btn-outline-info a {
+button a {
   color: #eeecda;
   text-decoration: none;
+}
+
+.footer {
+color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    padding: .75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: 1px solid rgba(0,0,0,.125);
+    font-family: Rubik,sans-serif;
+    color: #000;
+    opacity: .5;
+    font-size: 13px;
+    margin-top: 20px;
 }
 
 .card-footer {

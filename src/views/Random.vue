@@ -6,14 +6,13 @@
       <h3>
         <router-link
           :to="`/detailpage/${cat.id}`"
-          target="_blank"
           rel="noopener noreferrer"
           ><i class="fas fa-book-open"></i> Read more about the
           {{ cat.name }}</router-link
         >
       </h3>
       <get-cat-image :breedId="cat.id"></get-cat-image>
-      <b-button variant="info" v-on:click="reload()">Randomize</b-button>
+      <button variant="info" v-on:click="reload()">Randomize</button>
     </div>
   </div>
 </template>
@@ -79,8 +78,4 @@ a {
   color: #b83b5e;
 }
 
-button {
-  margin: 50px 0px;
-  width: 150px;
-}
 </style>
