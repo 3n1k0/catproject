@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <h1>{{ cat.name }}</h1>
+      <h1 >{{ cat.name }}</h1>
       <p>{{ cat.description }}</p>
       <h3>
         <router-link
@@ -11,8 +11,8 @@
           {{ cat.name }}</router-link
         >
       </h3>
-      <get-cat-image :breedId="cat.id"></get-cat-image>
-      <button variant="info" v-on:click="reload()">Randomize</button>
+      <get-cat-image :breedId=cat.id></get-cat-image>
+      <button variant="info"  @click="updateRandomCat()" >Randomize</button>
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@
 <script lang="ts">
 import Vue from "vue";
 import GetCatImage from "@/components/GetCatImage.vue";
+import { component } from 'vue/types/umd';
 
 export interface Cat {
   name: string;
@@ -32,21 +33,31 @@ export interface Cat {
 }
 
 export default Vue.extend({
+  
+  data(){
+    return {
+      randomCat: Math.floor(Math.random() * this.$store.state.cats.length)
+    }
+  },
+
   components: {
     "get-cat-image": GetCatImage
+
   },
+
+  methods: {
+    updateRandomCat(){
+      this.randomCat = Math.floor(Math.random() * this.$store.state.cats.length);
+    }
+  },
+
   computed: {
     cat(): Cat {
       return this.$store.state.cats[
-        Math.floor(Math.random() * this.$store.state.cats.length)
-      ];
+        this.randomCat
+      ]; 
     }
   },
-  methods: {
-    reload() {
-      location.reload();
-    }
-  }
 });
 </script>
 

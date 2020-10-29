@@ -1,5 +1,5 @@
 <template>
-  <img :src="url" style="max-width:20rem" img-alt="cat" img-top tag="article" />
+  <img  :src="url" style="max-width:20rem" img-alt="cat" img-top tag="article" />
 </template>
 
 <script lang="ts">
@@ -18,6 +18,7 @@ export default Vue.extend({
       url: ""
     };
   },
+
 
   mounted() {
     const headers = {
