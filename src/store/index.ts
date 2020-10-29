@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cats: []
+    cats: [{}]
   },
   mutations: {
     setCats: function(state, cats) {

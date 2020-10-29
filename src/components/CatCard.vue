@@ -47,6 +47,11 @@ export default Vue.extend({
       
     };
     const breedIdParam = "breed_id";
+
+    if (!this.breedId) {
+      return;
+    }
+
     axios
       .get("https://api.thecatapi.com/v1/images/search", {
         headers,
@@ -56,6 +61,7 @@ export default Vue.extend({
       })
       .then((response) => {
         this.image = response.data[0].url;
+        console.log('response', response.data);
         this.temperament = response.data[0].breeds[0].temperament
           .split(",", 3)
           .join(", ");
