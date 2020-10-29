@@ -61,7 +61,6 @@ export default Vue.extend({
       })
       .then((response) => {
         this.image = response.data[0].url;
-        console.log('response', response.data);
         this.temperament = response.data[0].breeds[0].temperament
           .split(",", 3)
           .join(", ");
