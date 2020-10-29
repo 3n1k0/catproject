@@ -2,13 +2,7 @@
   <div class="cat-card">
     <router-link :to="`/detailpage/${breedId}`">
       <div class="card" style="max-width:20rem">
-        <img
-          :src="image"
-          style="max-width:20rem"
-          img-alt="cat"
-          img-top
-          tag="article"
-        />
+        <img :src="image" style="max-width:20rem" :alt="title" tag="article" />
         <div class="card-text">
           <h2>{{ title }}</h2>
         </div>
@@ -130,17 +124,17 @@ button a {
 }
 
 .footer {
-color: #2c3e50;
-    display: flex;
-    flex-direction: column;
-    padding: .75rem 1.25rem;
-    background-color: rgba(0,0,0,.03);
-    border-top: 1px solid rgba(0,0,0,.125);
-    font-family: Rubik,sans-serif;
-    color: #000;
-    opacity: .5;
-    font-size: 13px;
-    margin-top: 20px;
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  font-family: Rubik, sans-serif;
+  color: #000;
+  opacity: 0.5;
+  font-size: 13px;
+  margin-top: 20px;
 }
 
 .card-footer {
