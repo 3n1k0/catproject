@@ -2,7 +2,7 @@
   <div class="cat-card">
     <router-link :to="`/detailpage/${breedId}`">
       <div class="card" style="max-width:20rem">
-        <img :src="image" style="max-width:20rem" :alt="title" tag="article" />
+        <img :src="image" style="max-width:20rem" :alt="title"/>
         <div class="card-text">
           <h2>{{ title }}</h2>
         </div>
@@ -44,6 +44,7 @@ export default Vue.extend({
   mounted() {
     const headers = {
       "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9",
+      
     };
     const breedIdParam = "breed_id";
     axios

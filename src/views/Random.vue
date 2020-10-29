@@ -21,16 +21,7 @@
 import Vue from "vue";
 import GetCatImage from "@/components/GetCatImage.vue";
 import { component } from 'vue/types/umd';
-
-export interface Cat {
-  name: string;
-  id: string;
-  dog_friendly: number;
-  intelligence: number;
-  affection_level: number;
-  indoor: boolean;
-  energy_level: number;
-}
+import { Cat } from '@/components/types'
 
 export default Vue.extend({
   

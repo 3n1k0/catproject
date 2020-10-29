@@ -43,21 +43,15 @@
 <script lang="ts">
 import CatCard from "@/components/CatCard.vue";
 import Vue from "vue";
+import { Cat } from '@/components/types'
 
-export interface Cat {
-  name: string;
-  id: string;
-  dog_friendly: number;
-  intelligence: number;
-  affection_level: number;
-  indoor: boolean;
-  energy_level: number;
-}
 
 export default Vue.extend({
   name: "home",
+
   components: {
     "cat-card": CatCard,
+    
   },
   computed: {
     cats(): Array<Cat> {
@@ -98,10 +92,14 @@ export default Vue.extend({
   data(): {
     selectedCategory: string;
     selectedSortingMethod: string;
+    categories: string;
+    sortingOptions: string
   } {
     return {
       selectedSortingMethod: "A-Z",
       selectedCategory: "",
+      categories: "",
+      sortingOptions: ""
     };
   },
 });
