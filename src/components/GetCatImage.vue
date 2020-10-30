@@ -16,6 +16,7 @@
 <script lang="ts">
 import Vue from "vue";
 import VueLoadImage from 'vue-load-image';
+import { Cat } from '@/types.ts'
 
 export default Vue.extend({
 
@@ -30,7 +31,6 @@ export default Vue.extend({
 
   computed: {
         url() {
-          console.log(this.breedId, this.$store.state.catImages, this.$store.state.catImages[this.breedId])
             return this.$store.state.catImages[this.breedId];
         }
     },

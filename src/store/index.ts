@@ -4,10 +4,12 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+
 export default new Vuex.Store({
+  
   state: {
     cats: [{}],
-    catImages: {}
+    catImages: [{}],
   },
   mutations: {
     setCats: function(state, cats) {
