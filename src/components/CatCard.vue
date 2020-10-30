@@ -43,7 +43,7 @@ export default Vue.extend({
 
   mounted() {
     const headers = {
-      "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9",
+      "x-rapidapi-key": process.env.API_KEY,
       
     };
     const breedIdParam = "breed_id";
