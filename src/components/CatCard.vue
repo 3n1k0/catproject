@@ -2,7 +2,7 @@
   <div class="cat-card">
     <router-link :to="`/detailpage/${breedId}`">
       <div class="card" style="max-width:20rem">
-        <img :src="image" style="max-width:20rem" :alt="title"/>
+        <get-cat-image :breedId="breedId" />
         <div class="card-text">
           <h2>{{ title }}</h2>
         </div>
@@ -20,12 +20,17 @@
 <script lang="ts">
 import axios from "axios";
 import Vue from "vue";
+import GetCatImage from '@/components/GetCatImage'
 
 export default Vue.extend({
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0);
     },
+  },
+
+  components: {
+    "get-cat-image": GetCatImage,
   },
 
   props: {
@@ -39,28 +44,6 @@ export default Vue.extend({
       image: "",
       temperament: "",
     };
-  },
-
-  mounted() {
-    const breedIdParam = "breed_id";
-
-    if (!this.breedId) {
-      return;
-    }
-
-    axios
-      .get("https://api.thecatapi.com/v1/images/search", {
-        params: {
-          [breedIdParam]: this.breedId,
-        },
-      })
-      .then((response) => {
-        this.image = response.data[0].url;
-        this.temperament = response.data[0].breeds[0].temperament
-          .split(",", 3)
-          .join(", ");
-      })
-      .catch((error) => console.log(error));
   },
 });
 </script>

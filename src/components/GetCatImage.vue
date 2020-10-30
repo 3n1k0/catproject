@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import Vue from "vue";
 import VueLoadImage from 'vue-load-image';
 
@@ -28,42 +27,31 @@ export default Vue.extend({
     breedId: String,
   },
 
-  data(): {
-    url: string;
-  } {
-    return {
-      url: "",
-    };
-  },
+
+  computed: {
+        url() {
+          console.log(this.breedId, this.$store.state.catImages, this.$store.state.catImages[this.breedId])
+            return this.$store.state.catImages[this.breedId];
+        }
+    },
+
 
   mounted() {
-    const breedIdParam = "breed_id";
-    axios
-      .get("https://api.thecatapi.com/v1/images/search", {
-        params: {
-          [breedIdParam]: this.breedId,
-        },
-      })
-      .then((response) => {
-        this.url = response.data[0].url;
-      })
-      .catch((error) => console.log(error));
+   
+    if (!this.breedId) {
+      return;
+    }
+    this.$store.dispatch('loadImage', {
+        breedId: this.breedId
+    });
   },
   watch: {
     breedId() {
-      const breedIdParam = "breed_id";
-      axios
-        .get("https://api.thecatapi.com/v1/images/search", {
-          params: {
-            [breedIdParam]: this.breedId,
-          },
-        })
-        .then((response) => {
-          this.url = response.data[0].url;
-        })
-        .catch((error) => console.log(error));
-    },
-  },
+        this.$store.dispatch('loadImage', {
+          breedId: this.breedId
+        });
+    }
+  }
 });
 </script>
 
