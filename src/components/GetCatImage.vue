@@ -37,13 +37,9 @@ export default Vue.extend({
   },
 
   mounted() {
-    const headers = {
-      "x-rapidapi-key": process.env.API_KEY,
-    };
     const breedIdParam = "breed_id";
     axios
       .get("https://api.thecatapi.com/v1/images/search", {
-        headers,
         params: {
           [breedIdParam]: this.breedId,
         },
@@ -55,13 +51,9 @@ export default Vue.extend({
   },
   watch: {
     breedId() {
-      const headers = {
-         "x-rapidapi-key": process.env.API_KEY,
-      };
       const breedIdParam = "breed_id";
       axios
         .get("https://api.thecatapi.com/v1/images/search", {
-          headers,
           params: {
             [breedIdParam]: this.breedId,
           },

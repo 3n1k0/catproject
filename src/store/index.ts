@@ -15,13 +15,9 @@ export default new Vuex.Store({
   },
   actions: {
     loadCats: function({ commit }) {
-      const headers = {
-         "x-rapidapi-key": process.env.API_KEY,
-      };
 
       axios
         .get("https://api.thecatapi.com/v1/breeds", {
-          headers
         })
         .then(response => {
           commit("setCats", response.data);
