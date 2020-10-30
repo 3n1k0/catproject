@@ -1,61 +1,77 @@
 <template>
-  <img  :src="url" style="max-width:20rem" img-alt="cat" img-top tag="article" />
+  <vue-load-image>
+    <img
+      slot="image"
+      :src="url"
+      style="max-width:20rem"
+      img-alt="cat"
+      img-top
+      tag="article"
+    />
+    <img slot="preloader" src="./image-loader.gif" />
+    <div slot="error">error message</div>
+  </vue-load-image>
 </template>
 
 <script lang="ts">
 import axios from "axios";
 import Vue from "vue";
+import VueLoadImage from 'vue-load-image';
 
 export default Vue.extend({
+
+  components: {
+    'vue-load-image': VueLoadImage
+  },
+  
   props: {
-    breedId: String
+    breedId: String,
   },
 
   data(): {
     url: string;
   } {
     return {
-      url: ""
+      url: "",
     };
   },
 
-
   mounted() {
     const headers = {
-      "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
+      "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9",
     };
     const breedIdParam = "breed_id";
     axios
       .get("https://api.thecatapi.com/v1/images/search", {
         headers,
         params: {
-          [breedIdParam]: this.breedId
-        }
+          [breedIdParam]: this.breedId,
+        },
       })
-      .then(response => {
+      .then((response) => {
         this.url = response.data[0].url;
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   },
   watch: {
     breedId() {
       const headers = {
-        "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9"
+        "x-rapidapi-key": "de7f86c3-250d-4d13-957d-fd7cac1258d9",
       };
       const breedIdParam = "breed_id";
       axios
         .get("https://api.thecatapi.com/v1/images/search", {
           headers,
           params: {
-            [breedIdParam]: this.breedId
-          }
+            [breedIdParam]: this.breedId,
+          },
         })
-        .then(response => {
+        .then((response) => {
           this.url = response.data[0].url;
         })
-        .catch(error => console.log(error));
-    }
-  }
+        .catch((error) => console.log(error));
+    },
+  },
 });
 </script>
 
