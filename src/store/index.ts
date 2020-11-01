@@ -29,6 +29,7 @@ export default new Vuex.Store({
         })
         .then(response => {
           commit("setCats", response.data);
+          
         });
     },
 

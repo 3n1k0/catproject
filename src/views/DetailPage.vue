@@ -22,7 +22,8 @@
         >
       </p>
     </div>
-    <div class="image">
+
+    <div class="detail-image">
       <get-cat-image :breedId="cat.id"></get-cat-image>
     </div>
 
@@ -64,7 +65,7 @@
         {{ cat.stranger_friendly }}
       </li>
     </ul>
-    
+
     <h2>Cats just as smart as the {{ cat.name }}:</h2>
     <div class="recommend-container">
       <div class="recommended">
@@ -98,7 +99,7 @@
 import GetCatImage from "@/components/GetCatImage.vue";
 import CatCard from "@/components/CatCard.vue";
 import Vue from "vue";
-import {Cat} from '@/components/types'
+import { Cat } from "@/components/types";
 
 export default Vue.extend({
   components: {
@@ -154,13 +155,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.image {
-  padding: 30px 0px 70px 0px;
-}
-
 .container {
   justify-content: center;
   display: grid;
+  align-items: center;
   padding-top: 120px;
   width: 100%;
 }
@@ -186,7 +184,9 @@ ul {
   align-items: center;
   justify-content: center;
   line-height: 1.8;
-  text-align: left;
+  text-align: center;
+  margin: 0 auto;
+  grid-gap: 1.5em;
 }
 
 li {
@@ -203,6 +203,7 @@ li {
     font-size: 20px;
   }
 }
+
 
 .wrapper {
   display: grid;
@@ -232,7 +233,7 @@ i {
 
 .recommended {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 340px));
   align-items: center;
   justify-content: center;
 }

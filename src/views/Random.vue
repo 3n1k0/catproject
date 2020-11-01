@@ -80,4 +80,14 @@ a {
   color: #b83b5e;
 }
 
+
+::v-deep .cat-image {
+  min-height: 500px;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+
+
 </style>

@@ -1,9 +1,8 @@
 <template>
   <vue-load-image>
-    <img
+    <img class="cat-image"
       slot="image"
       :src="url"
-      style="max-width:20rem"
       img-alt="cat"
       img-top
       tag="article"
@@ -55,4 +54,7 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+
+</style>

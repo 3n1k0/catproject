@@ -1,17 +1,16 @@
 <template>
   <div class="cat-card">
     <router-link :to="`/detailpage/${breedId}`">
-      <div class="card" style="max-width:20rem">
-        <get-cat-image :breedId="breedId" />
+      <div class="card">
+        <div class="img-container">
+          <get-cat-image class="cat-card-image" :breedId="breedId" />
+        </div>
         <div class="card-text">
           <h2>{{ title }}</h2>
         </div>
         <button v-on:click="scrollToTop()">
           <router-link :to="`/detailpage/${breedId}`">Learn more</router-link>
         </button>
-        <div class="footer">
-          <p>{{ temperament }}</p>
-        </div>
       </div>
     </router-link>
   </div>
@@ -20,7 +19,7 @@
 <script lang="ts">
 import axios from "axios";
 import Vue from "vue";
-import GetCatImage from '@/components/GetCatImage'
+import GetCatImage from "@/components/GetCatImage";
 
 export default Vue.extend({
   methods: {
@@ -35,7 +34,6 @@ export default Vue.extend({
 
   props: {
     title: String,
-    summary: String,
     breedId: String,
   },
 
@@ -82,14 +80,6 @@ h2 {
   font-size: 25px;
 }
 
-.cat-card img {
-  width: 100%;
-  max-height: 200px;
-  height: 200px;
-  object-fit: cover;
-  object-position: 50% 50%;
-}
-
 button {
   background: #f08a5d;
   margin: 0 auto;
@@ -100,6 +90,8 @@ button {
   color: #eeecda;
   border-radius: 10px;
   border: none;
+  font-size: 17px;
+  letter-spacing: -1px;
 }
 
 button a {
@@ -132,4 +124,15 @@ button a {
   opacity: 0.5;
   font-size: 13px;
 }
+
+
+::v-deep .cat-image {
+  width: 100%;
+  height: 100%;  
+  min-height: 180px;
+  max-height: 180px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
 </style>
