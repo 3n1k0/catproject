@@ -83,14 +83,6 @@ export default Vue.extend({
     "cat-card": CatCard
   },
 
-  mounted() {
-    window.scrollTo(0, 0);
-  },
-
-  updated() {
-    window.scrollTo(0, 0);
-  },
-
   data() {
     return {
       name: "",

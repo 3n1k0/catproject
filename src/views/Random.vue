@@ -33,16 +33,12 @@ import { Cat } from "@/components/types";
 export default Vue.extend({
   data() {
     return {
-      randomCat: Math.floor(Math.random() * this.$store.state.cats.length),
+      randomCat: Math.floor(Math.random() * this.$store.state.cats.length)
     };
   },
 
   components: {
-    "get-cat-image": GetCatImage,
-  },
-
-  mounted() {
-    window.scrollTo(0, 0);
+    "get-cat-image": GetCatImage
   },
 
   updated() {
@@ -54,14 +50,14 @@ export default Vue.extend({
       this.randomCat = Math.floor(
         Math.random() * this.$store.state.cats.length
       );
-    },
+    }
   },
 
   computed: {
     cat(): Cat {
       return this.$store.state.cats[this.randomCat];
-    },
-  },
+    }
+  }
 });
 </script>
 
