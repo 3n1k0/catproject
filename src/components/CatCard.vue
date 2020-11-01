@@ -77,7 +77,7 @@ h2 {
   color: #b83b5e;
   margin-bottom: 30px;
   margin-top: 10px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 button {
@@ -132,7 +132,8 @@ button a {
   min-height: 180px;
   max-height: 180px;
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 50% 20%;
+
 }
 
 </style>

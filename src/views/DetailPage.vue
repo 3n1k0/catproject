@@ -236,6 +236,7 @@ i {
   grid-template-columns: repeat(auto-fit, minmax(340px, 340px));
   align-items: center;
   justify-content: center;
+  width: 100vw;
 }
 
 .recommend-container {
@@ -257,5 +258,10 @@ i {
 .icons {
   width: 30px;
   height: 30px;
+}
+
+::v-deep .cat-image {
+max-width: 500px;
+  margin: 50px;
 }
 </style>
