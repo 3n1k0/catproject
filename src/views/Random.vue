@@ -17,7 +17,7 @@
         <p>{{ cat.temperament }}</p>
 
         <h3>Not a good match?</h3>
-        <button @click="updateRandomCat(), scrollToTop()">
+        <button @click="updateRandomCat()">
           show me another cat <i class="fas fa-sync-alt"></i>
         </button>
       </div>
@@ -28,7 +28,6 @@
 <script lang="ts">
 import Vue from "vue";
 import GetCatImage from "@/components/GetCatImage.vue";
-import { component } from "vue/types/umd";
 import { Cat } from "@/components/types";
 
 export default Vue.extend({
@@ -42,15 +41,19 @@ export default Vue.extend({
     "get-cat-image": GetCatImage,
   },
 
+  mounted() {
+    window.scrollTo(0, 0);
+  },
+
+  updated() {
+    window.scrollTo(0, 0);
+  },
+
   methods: {
     updateRandomCat() {
       this.randomCat = Math.floor(
         Math.random() * this.$store.state.cats.length
       );
-    },
-
-    scrollToTop() {
-      window.scrollTo(0, 0);
     },
   },
 
@@ -146,7 +149,7 @@ button a {
 
   button {
     width: 300px;
-    height: 80px;
+    height: 70px;
   }
 }
 </style>

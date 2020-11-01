@@ -27,42 +27,20 @@
       <get-cat-image :breedId="cat.id"></get-cat-image>
     </div>
 
-    <ul class="qualities">
-      <li>
-        <i class="fas fa-plug"></i> Energy level: {{ cat.energy_level }}/5
-      </li>
-      <li>
-        <i class="fas fa-glasses"></i>Intelligence: {{ cat.intelligence }}/5
-      </li>
-      <li>
-        <i class="fas fa-heart"></i>Affection level: {{ cat.affection_level }}/5
-      </li>
-      <li><i class="fas fa-dog"></i>Dog friendly: {{ cat.dog_friendly }}/5</li>
-      <li><i class="fas fa-vial"></i>Experimental: {{ cat.experimental }}/5</li>
-      <li>
-        <i class="fas fa-baby"></i>Child friendly: {{ cat.child_friendly }}/5
-      </li>
-      <li>
-        <i class="fas fa-house-user"></i>Suitable for indoors:
-        {{ indoor }}
-      </li>
-      <li>
-        <i class="fas fa-smile-beam"></i>Adaptibility:
-        {{ cat.adaptability }}
-      </li>
-      <li>
-        <i class="fas fa-cat"></i>Shedding level: {{ cat.shedding_level }}
-      </li>
-      <li v-if="pet">
-        <i class="fas fa-heart"></i>Loves to be petted: {{ pet }}
-      </li>
-      <li v-if="pet">
-        <i class="fas fa-comments"></i>Social needs:
-        {{ cat.social_needs }}
-      </li>
-      <li v-if="pet">
-        <i class="fas fa-male"></i>Stranger friendly:
-        {{ cat.stranger_friendly }}
+    <ul>
+      <li>⚡ Energy level: {{ cat.energy_level }}/5</li>
+      <li>🤓 Intelligence: {{ cat.intelligence }}/5</li>
+      <li>🥰 Affection level: {{ cat.affection_level }}/5</li>
+      <li>🐶 Dog friendly: {{ cat.dog_friendly }}/5</li>
+      <li>🧪 Experimental: {{ cat.experimental }}/5</li>
+      <li>👶 Child friendly: {{ cat.child_friendly }}/5</li>
+      <li>🏠 Suitable for indoors: {{ indoor }}</li>
+      <li>🔌 Adaptibility:{{ cat.adaptability }}</li>
+      <li>🧥 Shedding level: {{ cat.shedding_level }}</li>
+      <li v-if="cat.pet">❤️ Loves to be petted: {{ cat.pet }}</li>
+      <li v-if="cat.social_needs">💬 Social needs:{{ cat.social_needs }}</li>
+      <li v-if="cat.stranger_friendly">
+        🤷 Stranger friendly:{{ cat.stranger_friendly }}
       </li>
     </ul>
 
@@ -70,7 +48,6 @@
     <div class="recommend-container">
       <div class="recommended">
         <cat-card
-          class="recommended-card"
           v-for="cat in smartCats"
           :key="cat.name"
           :title="cat.name"
@@ -86,7 +63,6 @@
           :title="cat.name"
           :description="cat.description"
           :breedId="cat.id"
-          class="recommended-card"
           v-for="cat in lovingCats"
           :key="cat.name"
         ></cat-card>
@@ -104,13 +80,21 @@ import { Cat } from "@/components/types";
 export default Vue.extend({
   components: {
     "get-cat-image": GetCatImage,
-    "cat-card": CatCard,
+    "cat-card": CatCard
+  },
+
+  mounted() {
+    window.scrollTo(0, 0);
+  },
+
+  updated() {
+    window.scrollTo(0, 0);
   },
 
   data() {
     return {
       name: "",
-      description: "",
+      description: ""
     };
   },
 
@@ -147,19 +131,21 @@ export default Vue.extend({
             this.cat.name != cat.name
         )
         .slice(0, 3);
-    },
+    }
   },
 
-  props: ["breedId"],
+  props: ["breedId"]
 });
 </script>
 
 <style lang="scss" scoped>
 .container {
-  justify-content: center;
-  display: grid;
   align-items: center;
-  padding-top: 120px;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  padding-top: 150px;
+  align-content: center;
   width: 100%;
 }
 
@@ -169,6 +155,7 @@ export default Vue.extend({
 
 h1 {
   font-family: "Rubik", sans-serif;
+  padding-bottom: 20px;
 }
 
 h2 {
@@ -183,27 +170,19 @@ ul {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
-  line-height: 1.8;
+  line-height: 1.3;
   text-align: center;
-  margin: 0 auto;
-  grid-gap: 1.5em;
+  grid-gap: 0.5em;
+  width: 90%;
+  padding-top: 50px;
 }
 
 li {
   font-family: "Rubik", sans-serif;
-  font-size: 22px;
+  font-size: 16px;
   display: flex;
-  justify-items: space-between;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-  }
-
-  @media only screen and (max-width: 1200px) {
-    font-size: 20px;
-  }
+  justify-content: flex-start;
 }
-
 
 .wrapper {
   display: grid;
@@ -213,22 +192,13 @@ li {
 }
 
 i {
-  margin-right: 20px;
+  font-size: 18px;
   color: #f08a5d;
-  font-size: 27px;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 10px;
-  }
 }
 
 .catscription {
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
-
-  @media only screen and (max-width: 600px) {
-    width: 90%;
-  }
 }
 
 .recommended {
@@ -250,7 +220,7 @@ i {
 }
 
 .header {
-  display: flex;
+  display: grid;
   justify-content: space-around;
   padding-bottom: 10px;
 }
@@ -261,7 +231,45 @@ i {
 }
 
 ::v-deep .cat-image {
-max-width: 500px;
-  margin: 50px;
+  max-width: 500px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .color_container {
+    width: 60%;
+    padding: 50px 100px;
+  }
+
+  h2 {
+    padding-bottom: 20px;
+  }
+
+  .header {
+    display: flex;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0 auto;
+    grid-gap: 1em;
+    width: 50%;
+  }
+  li {
+    font-size: 20px;
+  }
+
+  i {
+    font-size: 20px;
+  }
+
+  .catscription {
+    width: 50%;
+    padding-bottom: 20px;
+  }
 }
 </style>

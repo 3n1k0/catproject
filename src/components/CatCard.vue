@@ -8,7 +8,7 @@
         <div class="card-text">
           <h2>{{ title }}</h2>
         </div>
-        <button v-on:click="scrollToTop()">
+        <button>
           <router-link :to="`/detailpage/${breedId}`">Learn more</router-link>
         </button>
       </div>
@@ -17,32 +17,25 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import Vue from "vue";
 import GetCatImage from "@/components/GetCatImage";
 
 export default Vue.extend({
-  methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0);
-    },
-  },
-
   components: {
-    "get-cat-image": GetCatImage,
+    "get-cat-image": GetCatImage
   },
 
   props: {
     title: String,
-    breedId: String,
+    breedId: String
   },
 
   data(): { image: string; temperament: string } {
     return {
       image: "",
-      temperament: "",
+      temperament: ""
     };
-  },
+  }
 });
 </script>
 
@@ -125,15 +118,12 @@ button a {
   font-size: 13px;
 }
 
-
 ::v-deep .cat-image {
   width: 100%;
-  height: 100%;  
+  height: 100%;
   min-height: 180px;
   max-height: 180px;
   object-fit: cover;
   object-position: 50% 20%;
-
 }
-
 </style>

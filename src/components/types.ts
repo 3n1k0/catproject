@@ -8,4 +8,3 @@ export interface Cat {
   lap: number;
   energy_level: number;
 }
-

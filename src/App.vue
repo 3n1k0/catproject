@@ -29,7 +29,6 @@ export default class Home extends Vue {}
 body {
   overscroll-behavior-y: none;
   background: #eeecda;
-
 }
 * {
   padding: 0;
@@ -37,6 +36,7 @@ body {
   box-sizing: border-box;
   font-family: "Karla", sans-serif;
   list-style: none;
+  outline: none;
 }
 
 #app {
@@ -48,7 +48,7 @@ body {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
@@ -80,7 +80,4 @@ a:hover {
 button {
   width: 150px;
 }
-
-
-
 </style>
