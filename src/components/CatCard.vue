@@ -22,20 +22,20 @@ import GetCatImage from "@/components/GetCatImage";
 
 export default Vue.extend({
   components: {
-    "get-cat-image": GetCatImage
+    "get-cat-image": GetCatImage,
   },
 
   props: {
     title: String,
-    breedId: String
+    breedId: String,
   },
 
   data(): { image: string; temperament: string } {
     return {
       image: "",
-      temperament: ""
+      temperament: "",
     };
-  }
+  },
 });
 </script>
 

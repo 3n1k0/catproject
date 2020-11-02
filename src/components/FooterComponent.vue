@@ -21,14 +21,14 @@ import Vue from "vue";
 
 export default Vue.extend({
   props: {
-    breedId: String
+    breedId: String,
   },
 
   computed: {
     cats() {
       return this.$store.state.cats.slice(0, 11);
-    }
-  }
+    },
+  },
 });
 </script>
 
