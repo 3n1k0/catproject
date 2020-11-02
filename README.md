@@ -1,4 +1,4 @@
-# Catcyclopedia
+# Catcyclopedia 😻
 
 ## Description
 
