@@ -12,12 +12,12 @@
         <option value="Z-A">Z-A</option>
       </select>
 
-      <label for="Sorting">Categories:</label>
+      <label for="Categories">Categories:</label>
       <select
         v-model="selectedCategory"
         :options="categories"
         name="category"
-        id="category"
+        id="Categories"
       >
         <option value="dog_friendly">Least dog friendly</option>
         <option value="intelligent">Not too smart but sweet</option>
