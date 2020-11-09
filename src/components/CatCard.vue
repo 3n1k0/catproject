@@ -74,7 +74,7 @@ h2 {
 }
 
 button {
-  background: #f08a5d;
+  background: #d46735;
   margin: 0 auto;
   cursor: pointer;
   border: none;
