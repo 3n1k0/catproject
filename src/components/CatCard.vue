@@ -9,7 +9,7 @@
           <h2>{{ title }}</h2>
         </div>
         <button>
-          <router-link :to="`/detailpage/${breedId}`">Read more</router-link>
+          <router-link :to="`/detailpage/${breedId}`>Details</router-link>
         </button>
       </div>
     </router-link>
@@ -74,13 +74,13 @@ h2 {
 }
 
 button {
-  background: #d46735;
+  background: #d2622f;
   margin: 0 auto;
   cursor: pointer;
   border: none;
   padding: 12px;
   font-weight: 600;
-  color: #f2f1e9;
+  color: #ffffff;
   border-radius: 10px;
   border: none;
   font-size: 17px;
@@ -88,7 +88,7 @@ button {
 }
 
 button a {
-  color: #f2f1e9;
+  color: #ffffff;
   text-decoration: none;
 }
 
