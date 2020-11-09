@@ -55,32 +55,41 @@ export default Vue.extend({
     cats(): Array<Cat> {
       let catArray: Array<Cat> = this.$store.state.cats;
 
-      if (this.selectedCategory === "intelligent") {
-        catArray = catArray.filter((cat: Cat): boolean => {
-          return cat.intelligence === 3;
-        });
-      } else if (this.selectedCategory === "dog_friendly") {
-        catArray = catArray.filter((cat: Cat): boolean => {
-          return cat.dog_friendly === 2;
-        });
-      } else if (this.selectedCategory === "affection_level") {
-        catArray = catArray.filter((cat: Cat): boolean => {
-          return cat.affection_level === 3;
-        });
-      } else if (this.selectedCategory === "indoor") {
-        catArray = catArray.filter((cat: Cat): boolean => {
-          return !cat.indoor;
-        });
-      } else if (this.selectedCategory === "energy_level") {
-        catArray = catArray.filter((cat: Cat): boolean => {
-          return cat.energy_level === 1;
-        });
+      switch (this.selectedCategory) {
+        case "intelligence":
+          catArray = catArray.filter(
+            (cat: Cat): boolean => cat.intelligence === 3
+          );
+          break;
+
+        case "dog_friendly":
+          catArray = catArray.filter(
+            (cat: Cat): boolean => cat.dog_friendly === 2
+          );
+          break;
+
+        case "affection_level":
+          catArray = catArray.filter(
+            (cat: Cat): boolean => cat.affection_level === 3
+          );
+          break;
+
+        case "indoor":
+          catArray = catArray.filter((cat: Cat): boolean => !cat.indoor);
+          break;
+
+        case "energy_level":
+          catArray = catArray.filter(
+            (cat: Cat): boolean => cat.energy_level === 1
+          );
+          break;
       }
 
+
       if (this.selectedSortingMethod === "Z-A") {
-        catArray = catArray.slice().sort((aCat: Cat, bCat: Cat) => {
-          return aCat.name > bCat.name ? -1 : 1;
-        });
+        catArray = catArray
+          .slice()
+          .sort((aCat: Cat, bCat: Cat) => (aCat.name > bCat.name ? -1 : 1));
       }
 
       return catArray.slice(0, 10);
@@ -159,5 +168,4 @@ select:focus {
   color: #222;
   outline: none;
 }
-
 </style>
