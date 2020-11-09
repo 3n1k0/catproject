@@ -8,7 +8,7 @@
       img-top
       tag="article"
     />
-    <img slot="preloader" src="./image-loader.gif" />
+    <img slot="preloader" src="assets/image-loader.gif" />
     <div slot="error">ERROR: Please refresh the page</div>
   </vue-load-image>
 </template>

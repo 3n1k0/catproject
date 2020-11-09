@@ -28,7 +28,7 @@
 <script lang="ts">
 import Vue from "vue";
 import GetCatImage from "@/components/GetCatImage.vue";
-import { Cat } from "@/components/types";
+import { Cat } from "@/common/types";
 
 export default Vue.extend({
   data() {

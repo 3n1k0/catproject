@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <a class="brand" href="/">Catcyclopedia</a>
+    <a class="brand" href="/">Catcyclopedia <i class="fas fa-paw"></i></a>
     <div class="navbar-right">
       <div class="nav-item">
         <router-link to="/">Home</router-link>
@@ -19,17 +19,15 @@ export default {};
 <style scoped>
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 80px;
   width: 100%;
   background: rgb(104, 67, 104);
   opacity: 0.7;
-  padding: 0px;
 }
 
 .navbar-right {
-  padding-right: 60px;
   display: flex;
   justify-content: flex-end;
 }
@@ -42,16 +40,23 @@ nav {
 .brand {
   color: white;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 18px;
+  padding: 0px 30px 0px 20px;
+  min-width: 200px;
 }
 
 @media only screen and (min-width: 1200px) {
   nav {
     padding: 0px 50px;
+    justify-content: space-between;
   }
 
   .navbar-right {
     padding-right: 60px;
+  }
+
+  .brand {
+    font-size: 25px;
   }
 }
 </style>

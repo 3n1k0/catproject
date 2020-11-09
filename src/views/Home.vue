@@ -43,13 +43,13 @@
 <script lang="ts">
 import CatCard from "@/components/CatCard.vue";
 import Vue from "vue";
-import { Cat } from "@/components/types";
+import { Cat } from "@/common/types";
 
 export default Vue.extend({
   name: "home",
 
   components: {
-    "cat-card": CatCard
+    "cat-card": CatCard,
   },
   computed: {
     cats(): Array<Cat> {
@@ -84,7 +84,7 @@ export default Vue.extend({
       }
 
       return catArray.slice(0, 10);
-    }
+    },
   },
 
   data(): {
@@ -97,26 +97,25 @@ export default Vue.extend({
       selectedSortingMethod: "A-Z",
       selectedCategory: "indoor",
       categories: "",
-      sortingOptions: ""
+      sortingOptions: "",
     };
-  }
+  },
 });
 </script>
 
 <style>
 .form-container {
   display: grid;
-  grid-column: 1fr 1fr;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 30px;
-  margin-top: 70px;
+  margin-top: 90px;
 }
 
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(370px, 370px));
-  padding: 80px;
+  padding: 20px 80px;
   grid-gap: 1rem;
   align-items: center;
   justify-content: center;
@@ -145,6 +144,8 @@ select {
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
   outline: none;
+  max-width: 250px;
+  margin: 10px;
 }
 
 select:hover {
@@ -158,4 +159,5 @@ select:focus {
   color: #222;
   outline: none;
 }
+
 </style>
