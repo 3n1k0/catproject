@@ -4,7 +4,7 @@
       class="cat-image"
       slot="image"
       :src="url"
-      img-alt="cat"
+      alt= "cat image"
       img-top
       tag="article"
     />
