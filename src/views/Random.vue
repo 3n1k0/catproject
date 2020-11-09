@@ -1,5 +1,9 @@
 <template>
   <div>
+    <meta
+      name="Random Page"
+      content="A randomly generated cat with details and image."
+    />
     <div class="container">
       <div class="color_container">
         <h1>{{ cat.name }}</h1>
@@ -33,12 +37,12 @@ import { Cat } from "@/common/types";
 export default Vue.extend({
   data() {
     return {
-      randomCat: Math.floor(Math.random() * this.$store.state.cats.length)
+      randomCat: Math.floor(Math.random() * this.$store.state.cats.length),
     };
   },
 
   components: {
-    "get-cat-image": GetCatImage
+    "get-cat-image": GetCatImage,
   },
 
   updated() {
@@ -50,14 +54,14 @@ export default Vue.extend({
       this.randomCat = Math.floor(
         Math.random() * this.$store.state.cats.length
       );
-    }
+    },
   },
 
   computed: {
     cat(): Cat {
       return this.$store.state.cats[this.randomCat];
-    }
-  }
+    },
+  },
 });
 </script>
 

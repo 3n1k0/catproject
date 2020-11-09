@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <meta
+      name="Detail Page"
+      content="Detailed description of all cats listed on the Catcyclopedia website."
+    />
     <h1>{{ cat.name }}</h1>
     <div class="catscription">
       <div class="header">
@@ -80,13 +84,13 @@ import { Cat } from "@/common/types";
 export default Vue.extend({
   components: {
     "get-cat-image": GetCatImage,
-    "cat-card": CatCard
+    "cat-card": CatCard,
   },
 
   data() {
     return {
       name: "",
-      description: ""
+      description: "",
     };
   },
 
@@ -123,10 +127,10 @@ export default Vue.extend({
             this.cat.name != cat.name
         )
         .slice(0, 3);
-    }
+    },
   },
 
-  props: ["breedId"]
+  props: ["breedId"],
 });
 </script>
 

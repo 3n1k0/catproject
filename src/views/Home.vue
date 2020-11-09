@@ -1,5 +1,10 @@
 <template>
   <div class="home-container">
+    <meta
+      name="Home Page"
+      content="Database that contains details and information about different kinds of cats."
+    />
+
     <div class="form-container">
       <label for="Sorting">Sort by:</label>
       <select
@@ -84,7 +89,6 @@ export default Vue.extend({
           );
           break;
       }
-
 
       if (this.selectedSortingMethod === "Z-A") {
         catArray = catArray
