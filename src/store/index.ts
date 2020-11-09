@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from "axios";
+import thecatapi from "../services/thecatapi";
 
 Vue.use(Vuex);
 
@@ -21,7 +21,7 @@ export default new Vuex.Store({
   },
   actions: {
     loadCats: function({ commit }) {
-      axios.get("https://api.thecatapi.com/v1/breeds", {}).then(response => {
+      thecatapi.get("/breeds").then(response => {
         commit("setCats", response.data);
       });
     },
@@ -34,8 +34,8 @@ export default new Vuex.Store({
 
       const breedIdParamName = "breed_id";
 
-      axios
-        .get("https://api.thecatapi.com/v1/images/search", {
+      thecatapi
+        .get("/images/search", {
           params: {
             [breedIdParamName]: breedId
           }

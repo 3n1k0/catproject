@@ -3,7 +3,11 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import DetailPage from "../views/DetailPage.vue";
 import Random from "../views/Random.vue";
-// import store from './store'
+import VueMeta from "vue-meta";
+
+Vue.use(VueMeta, {
+  refreshOnceOnNavigation: true
+});
 
 Vue.use(VueRouter);
 
