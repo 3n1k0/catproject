@@ -1,10 +1,5 @@
 <template>
   <div class="home-container">
-    <meta
-      name="Home Page"
-      content="Database that contains details and information about different kinds of cats."
-    />
-
     <div class="form-container">
       <label for="Sorting">Sort by:</label>
       <select
@@ -54,7 +49,7 @@ export default Vue.extend({
   name: "home",
 
   components: {
-    "cat-card": CatCard,
+    "cat-card": CatCard
   },
   computed: {
     cats(): Array<Cat> {
@@ -97,7 +92,7 @@ export default Vue.extend({
       }
 
       return catArray.slice(0, 10);
-    },
+    }
   },
 
   data(): {
@@ -110,9 +105,9 @@ export default Vue.extend({
       selectedSortingMethod: "A-Z",
       selectedCategory: "indoor",
       categories: "",
-      sortingOptions: "",
+      sortingOptions: ""
     };
-  },
+  }
 });
 </script>
 
