@@ -59,6 +59,9 @@ Responsive fixed navbar that matches aesthetically and functionally to the conte
 
 
 ## Project setup
+
+Set an environment variable called VUE_APP_API_KEY and assign your own API key for the Cat API. 
+
 ```
 npm install
 ```
