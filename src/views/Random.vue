@@ -36,26 +36,26 @@ export default Vue.extend({
       title: "Random",
       titleTemplate: "%s - Catcyclopedia",
       htmlAttrs: {
-        lang: "en",
+        lang: "en"
       },
       meta: [
         {
           vmid: "description",
           name: "description",
-          content: `Are you considering getting a new friend? Check if this cat could be the one for you.`,
-        },
-      ],
+          content: `Are you considering getting a new friend? Check if this cat could be the one for you.`
+        }
+      ]
     };
   },
 
   data() {
     return {
-      randomCat: Math.floor(Math.random() * this.$store.state.cats.length),
+      randomCat: Math.floor(Math.random() * this.$store.state.cats.length)
     };
   },
 
   components: {
-    "get-cat-image": GetCatImage,
+    "get-cat-image": GetCatImage
   },
 
   updated() {
@@ -67,14 +67,14 @@ export default Vue.extend({
       this.randomCat = Math.floor(
         Math.random() * this.$store.state.cats.length
       );
-    },
+    }
   },
 
   computed: {
     cat(): Cat {
       return this.$store.state.cats[this.randomCat];
-    },
-  },
+    }
+  }
 });
 </script>
 

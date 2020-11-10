@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     cats: [{}],
-    catImages: [{}],
+    catImages: [{}]
   },
   mutations: {
     setCats: function(state, cats) {
@@ -17,11 +17,11 @@ export default new Vuex.Store({
       const { url } = data[0];
       const { id } = data[0].breeds[0];
       state.catImages = { ...state.catImages, ...{ [id]: url } };
-    },
+    }
   },
   actions: {
     loadCats: function({ commit }) {
-      thecatapi.get("/breeds").then((response) => {
+      thecatapi.get("/breeds").then(response => {
         commit("setCats", response.data);
       });
     },
@@ -37,13 +37,13 @@ export default new Vuex.Store({
       thecatapi
         .get("/images/search", {
           params: {
-            [breedIdParamName]: breedId,
-          },
+            [breedIdParamName]: breedId
+          }
         })
-        .then((response) => {
+        .then(response => {
           commit("loadImage", response.data);
         });
-    },
+    }
   },
-  modules: {},
+  modules: {}
 });

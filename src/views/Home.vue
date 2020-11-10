@@ -50,22 +50,21 @@ export default Vue.extend({
     title: "Home",
     titleTemplate: "%s - Catcyclopedia",
     htmlAttrs: {
-      lang: "en",
+      lang: "en"
     },
     meta: [
       {
         vmid: "description",
         name: "description",
-        content:
-          "Cat database with images and information about various breeds",
-      },
-    ],
+        content: "Cat database with images and information about various breeds"
+      }
+    ]
   },
 
   name: "home",
 
   components: {
-    "cat-card": CatCard,
+    "cat-card": CatCard
   },
   computed: {
     cats(): Array<Cat> {
@@ -108,7 +107,7 @@ export default Vue.extend({
       }
 
       return catArray.slice(0, 10);
-    },
+    }
   },
 
   data(): {
@@ -121,9 +120,9 @@ export default Vue.extend({
       selectedSortingMethod: "A-Z",
       selectedCategory: "indoor",
       categories: "",
-      sortingOptions: "",
+      sortingOptions: ""
     };
-  },
+  }
 });
 </script>
 
