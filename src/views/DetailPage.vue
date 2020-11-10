@@ -78,34 +78,32 @@ import Vue from "vue";
 import { Cat } from "@/common/types";
 
 export default Vue.extend({
-
-    metaInfo() {
+  metaInfo() {
     return {
       title: "Random",
       titleTemplate: "%s - Catcyclopedia",
       htmlAttrs: {
-        lang: "en"
+        lang: "en",
       },
       meta: [
         {
           vmid: "description",
           name: "description",
-          content: `Are you considering getting a new friend? Cat information database with images and descriptions.`
-        }
-      ]
+          content: `Are you considering getting a new friend? Cat information database with images and descriptions.`,
+        },
+      ],
     };
   },
 
-
   components: {
     "get-cat-image": GetCatImage,
-    "cat-card": CatCard
+    "cat-card": CatCard,
   },
 
   data() {
     return {
       name: "",
-      description: ""
+      description: "",
     };
   },
 
@@ -142,10 +140,10 @@ export default Vue.extend({
             this.cat.name != cat.name
         )
         .slice(0, 3);
-    }
+    },
   },
 
-  props: ["breedId"]
+  props: ["breedId"],
 });
 </script>
 

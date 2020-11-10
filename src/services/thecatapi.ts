@@ -5,6 +5,6 @@ export default axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    "x-api-key": process.env.VUE_APP_API_KEY
-  }
+    "x-api-key": process.env.VUE_APP_API_KEY,
+  },
 });
