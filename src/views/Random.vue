@@ -31,6 +31,23 @@ import GetCatImage from "@/components/GetCatImage.vue";
 import { Cat } from "@/common/types";
 
 export default Vue.extend({
+  metaInfo() {
+    return {
+      title: "Random",
+      titleTemplate: "%s - Catcyclopedia",
+      htmlAttrs: {
+        lang: "en"
+      },
+      meta: [
+        {
+          vmid: "description",
+          name: "description",
+          content: `Are you considering getting a new friend? Check if this cat could be the one for you.`
+        }
+      ]
+    };
+  },
+
   data() {
     return {
       randomCat: Math.floor(Math.random() * this.$store.state.cats.length)

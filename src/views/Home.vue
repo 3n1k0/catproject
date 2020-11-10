@@ -46,6 +46,21 @@ import Vue from "vue";
 import { Cat } from "@/common/types";
 
 export default Vue.extend({
+  metaInfo: {
+    title: "Home",
+    titleTemplate: "%s - Catcyclopedia",
+    htmlAttrs: {
+      lang: "en"
+    },
+    meta: [
+      {
+        vmid: "description",
+        name: "description",
+        content: "Cat database with images and information about various breeds"
+      }
+    ]
+  },
+
   name: "home",
 
   components: {
